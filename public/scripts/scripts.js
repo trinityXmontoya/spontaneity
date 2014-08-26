@@ -1,33 +1,43 @@
-// google.maps.event.addDomListener(window, 'load', initialize);
 $(function() {
+
   var directionsService = new google.maps.DirectionsService();
+  // So we only have to hit the Google Maps Directions API once for each 'adventure', I'm pushing it into an array. Then we cycle through steps one by one with next and previous click listeners below.
   var directionsList = [];
+  // There's probably a much more elegant way to do this, but using a counter to cycle through the steps in the journey.
   var counter = 0;
 
+  var pos;
+
+  // Obtain the Google Maps Directions
   function initialize() {
 
     // Get current position
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-      console.log("pos", pos);
+      console.log("current position", position);
+
+      // Get coordinates for current position
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      var start = lat+","+lng;
+
+      var end = "newark, nj";
+
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.WALKING
+      };
+
+      directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsList.push(response.routes[0].legs[0].steps)
+          displayDirection();
+          console.log("response", response.routes[0].legs[0].steps[0].instructions);
+        }
+      });
+
     });
 
-    var start = "chicago, il";
-    var end = "gallup, nm";
-    console.log("start", start);
-    var request = {
-      origin: start,
-      destination: end,
-      travelMode: google.maps.TravelMode.WALKING
-    };
-    directionsService.route(request, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        directionsList.push(response.routes[0].legs[0].steps)
-        displayDirection();
-        console.log("response", response.routes[0].legs[0].steps[0].instructions);
-      }
-    });
   }
 
   // Display the current direction in the list.
@@ -35,16 +45,21 @@ $(function() {
     $(".directions").html(directionsList[0][counter].instructions)
   }
 
+  // *** Click listeners ***
+
+ // Get Google Maps directions upon click of 'declan'
   $(".declan").on("click", function(){
     console.log("clicked");
     initialize();
   })
 
+  // Next button. Adds to counter to iterate through steps of journey
   $(document).on('click','button.next', function(){
       counter ++;
       displayDirection();
   })
 
+  // Previous button
   $(document).on('click','button.previous', function(){
     if (counter > 0) {
       counter --;

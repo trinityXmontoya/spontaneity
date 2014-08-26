@@ -22,17 +22,20 @@ $(function() {
 
       var end = "newark, nj";
 
+      // Format the request for the directions
       var request = {
         origin: start,
         destination: end,
         travelMode: google.maps.TravelMode.WALKING
       };
 
+      // Make the directions route request
       directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
+          // Push the returned directions into an array
           directionsList.push(response.routes[0].legs[0].steps)
+          // Call the displayDirection function below to display one at a time
           displayDirection();
-          console.log("response", response.routes[0].legs[0].steps[0].instructions);
         }
       });
 
@@ -49,7 +52,6 @@ $(function() {
 
  // Get Google Maps directions upon click of 'declan'
   $(".declan").on("click", function(){
-    console.log("clicked");
     initialize();
   })
 

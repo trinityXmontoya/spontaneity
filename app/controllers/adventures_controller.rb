@@ -1,11 +1,5 @@
 class AdventuresController < ApplicationController
 
-  def index
-    adventures = Adventure.where(user_id: params[:id])
-
-    render json: adventures
-  end
-
   def show
     adventure = Adventure.where(user_id: params[:id])
 

@@ -22,10 +22,10 @@ sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
       controller: 'AdventureCtrl',
       templateUrl: 'app/views/new_adventure.html'
     })
-    .when('/submit_adventure',
+    .when('/submit_destination',
     {
-      controller: 'AdventureCtrl',
-      templateUrl: 'app/views/submit_adventure.html'
+      controller: 'DestinationCtrl',
+      templateUrl: 'app/views/submit_destination.html'
     })
     .otherwise({ redirectTo: '/' });
 

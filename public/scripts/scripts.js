@@ -20,6 +20,19 @@ $(function() {
       var lng = position.coords.longitude;
       var start = lat+","+lng;
 
+      var beginning_lat = lat.toFixed(1);
+      var beginning_long = lng.toFixed(1);
+      var beginning = beginning_lat+","+beginning_long;
+
+      $.ajax({
+        url:'/places/',
+        dataType: 'json',
+        method: 'GET',
+        data: {latlng: beginning}
+      }).done(function(results){
+        console.log("data", results);
+      })
+
       var end = "newark, nj";
 
       // Format the request for the directions

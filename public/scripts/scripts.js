@@ -21,9 +21,12 @@ $(function() {
       //   map_long:'',
       //   pins:''
       // });
-
-  // Obtain the Google Maps Directions
-  function initialize() {
+  $(document).on("submit","form.location_form", function(ev){
+    var locationInput = $(".location").val();
+    console.log("locationInput", locationInput);
+    $("location").val('');
+  // // Obtain the Google Maps Directions
+  // function initialize() {
 
     // Get current position
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -73,7 +76,7 @@ $(function() {
 
     });
 
-  }
+  })
 
   // Display the current direction in the list.
   function displayDirection() {
@@ -83,13 +86,9 @@ $(function() {
   // *** Click listeners ***
 
  // Get Google Maps directions upon click of 'declan'
-  // $(document).on("click","form.location_button", function(){
+  // $(document).on("submit","form.location_form", function(){
   //   initialize();
   // })
-
-  $("location_form").on("submit" function(){
-    initialize();
-  })
 
   // Next button. Adds to counter to iterate through steps of journey
   $(document).on('click','button.next', function(){
@@ -103,6 +102,26 @@ $(function() {
       counter --;
       displayDirection();
     }
+  })
+
+  $(document).on('click','button.matrix', function(){
+    $.ajax({
+        url:'http://open.mapquestapi.com/directions/v2/routematrix?key=Fmjtd%7Cluur250zl1%2C85%3Do5-9w2l0r&json={locations:[{latLng:{lat:54.0484068,lng:-2.7990345}},{latLng:{lat:53.9593817,lng:-1.0814175}},{latLng:{lat:53.9593817,lng:-1.0514175}},{latLng:{lat:53.9593817,lng:-1.0114175}}],options:{allToAll:false}}',
+        dataType: 'json',
+        method: 'GET'
+
+        // {
+        //        locations:
+        //          [
+        //           {latLng:{lat: 54.0484068, lng: -2.7990345}},
+        //           {latLng:{lat: 53.9593817, lng: -1.0814175}},
+        //           {latLng:{lat: 53.9593817, lng: -1.0514175}},
+        //           {latLng:{lat: 53.9593817, lng: -1.0114175}}
+        //          ]
+        //       }
+      }).done(function(results){
+        console.log("results", results);
+      })
   })
 
 });

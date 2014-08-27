@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :adventures, except: [:new, :edit]
   resources :destinations
   resources :interests, only: [:index]
   resources :users, except: [:index]

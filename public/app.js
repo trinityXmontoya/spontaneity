@@ -1,11 +1,11 @@
 'use strict';
 
-var SponApp = angular.module('SponApp', ['ngRoute']);
+var sponApp = angular.module('sponApp', ['ngRoute']);
 
 // ROUTES
 
-SponApp.config(['$routeProvider', function ($routeProvider){
-// give path, view, controller
+sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
+
   $routeProvider
     .when('/declan',
       {
@@ -17,5 +17,17 @@ SponApp.config(['$routeProvider', function ($routeProvider){
         controller: '',
         templateUrl: 'app/views/trinity.html'
       })
+    .when('/new_adventure',
+    {
+      controller: 'AdventureCtrl',
+      templateUrl: 'app/views/new_adventure.html'
+    })
+    .when('/submit_adventure',
+    {
+      controller: 'AdventureCtrl',
+      templateUrl: 'app/views/submit_adventure.html'
+    })
     .otherwise({ redirectTo: '/' });
+
+    $locationProvider.html5Mode(true);
 }]);

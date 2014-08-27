@@ -8,6 +8,20 @@ $(function() {
 
   var pos;
 
+      // newMap: function(ev){
+      // var mapInput = $(ev.currentTarget).serializeObject();
+      // $(ev.currentTarget).val('');
+      // var mapName = mapInput.map_name;
+      // var Map = new Comb.Models.Map({
+      // // var Map = ({
+      //   name: mapName,
+      //   creator_id: responseUserId,
+      //   user_id: responseUserId,
+      //   map_lat:'',
+      //   map_long:'',
+      //   pins:''
+      // });
+
   // Obtain the Google Maps Directions
   function initialize() {
 
@@ -30,27 +44,32 @@ $(function() {
         method: 'GET',
         data: {latlng: beginning}
       }).done(function(results){
+
+
         console.log("data", results);
+
+        var end_lat = results.response.venues[0].location.lat;
+        var end_long = results.response.venues[0].location.lng;
+        var end = end_lat+","+end_long;
+
+        // Format the request for the directions
+        var request = {
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode.WALKING
+        };
+
+        // Make the directions route request
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            // Push the returned directions into an array
+            directionsList.push(response.routes[0].legs[0].steps)
+            // Call the displayDirection function below to display one at a time
+            displayDirection();
+          }
+        });
+
       })
-
-      var end = "newark, nj";
-
-      // Format the request for the directions
-      var request = {
-        origin: start,
-        destination: end,
-        travelMode: google.maps.TravelMode.WALKING
-      };
-
-      // Make the directions route request
-      directionsService.route(request, function(response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-          // Push the returned directions into an array
-          directionsList.push(response.routes[0].legs[0].steps)
-          // Call the displayDirection function below to display one at a time
-          displayDirection();
-        }
-      });
 
     });
 
@@ -64,7 +83,11 @@ $(function() {
   // *** Click listeners ***
 
  // Get Google Maps directions upon click of 'declan'
-  $(".declan").on("click", function(){
+  // $(document).on("click","form.location_button", function(){
+  //   initialize();
+  // })
+
+  $("location_form").on("submit" function(){
     initialize();
   })
 

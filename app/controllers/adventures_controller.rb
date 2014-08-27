@@ -35,6 +35,6 @@ class AdventuresController < ApplicationController
 
   private
   def adventure_params
-    params.require(:adventure).permit(:user_id,:destination_id,:status,:zipcode, :time_limit)
+    params.require(:adventure).permit(:user_id,:destination_id,:status,:start_location, :time_limit)
   end
 end

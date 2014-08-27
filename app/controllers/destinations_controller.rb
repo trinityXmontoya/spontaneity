@@ -17,6 +17,7 @@ class DestinationsController < ApplicationController
 
   def create
     destination = Destination.new(destination_params)
+    destination.calculate_coords(destination_params[:address])
     if destination.save
       render json: destination, status: :created, location: destination
     else
@@ -46,6 +47,6 @@ class DestinationsController < ApplicationController
 
   private
   def destination_params
-    params.require(:destination).permit(:lat,:long,:name,:rating)
+    params.require(:destination).permit(:address,:lat,:long,:name,:rating)
   end
 end

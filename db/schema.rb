@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827025843) do
+ActiveRecord::Schema.define(version: 20140827050325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "adventures", force: true do |t|
+    t.integer  "user_id",                                null: false
+    t.integer  "destination_id"
+    t.string   "status",         default: "in-progress", null: false
+    t.integer  "zipcode",                                null: false
+    t.integer  "time_limit",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "adventures", ["destination_id"], name: "index_adventures_on_destination_id", using: :btree
+  add_index "adventures", ["user_id"], name: "index_adventures_on_user_id", using: :btree
 
   create_table "destinations", force: true do |t|
     t.string   "name"
@@ -28,6 +41,14 @@ ActiveRecord::Schema.define(version: 20140827025843) do
 
   create_table "interests", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.hstore   "interests"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

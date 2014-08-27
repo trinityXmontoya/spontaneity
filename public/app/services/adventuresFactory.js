@@ -2,8 +2,9 @@ sponApp.factory('adventuresFactory', ['$http', function($http){
 
   var factory = {};
 
-  factory.createAdventure = function(){
-    return $http.post('/adventures')
+  factory.createAdventure = function(adventureParams){
+    return $http.post('/adventures', {adventure: adventureParams})
   }
 
+  return factory;
 }])

@@ -1,14 +1,12 @@
 <h1>SUBMIT DESTINATION</h1>
 
- <div>
+<div>
   <form novalidate class="simple-form" name="destinationForm">
-    Name: <input type="text" ng-model="destination.name" /><br />
-    Address: <input type="text" ng-model="destination.address" /><br />
+    Name: <input type="text" ng-model="destination.name" /><br>
+    Address: <input type="text" ng-model="destination.address" /><br>
     <button ng-click="submitDestination(destination)">SAVE</button>
   </form>
   <pre>form = {{destination | json}}</pre>
+
+  {{destinationConfirmedMessage}}
 </div>
-
-<script>
-
-</script>

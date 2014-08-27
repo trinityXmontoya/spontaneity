@@ -5,8 +5,8 @@ class Adventure < ActiveRecord::Base
   AVG_MILE_TIME = 15
 
   def select_destination
-    options = self.intial_filtering
-    options = foursquare_search if !options
+    options = self.initial_filtering
+    # options = foursquare_search if !options
     # google_filter(options)
   end
 

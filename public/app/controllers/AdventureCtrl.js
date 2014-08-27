@@ -1,12 +1,13 @@
 sponApp.controller('AdventureCtrl', ['$scope','adventuresFactory', '$routeParams', function($scope, adventuresFactory, $routeParams){
 
-  adventuresFactory.createAdventure()
-  .success( function(){
-    // $scope. = ;
-  })
-  .error( function(){
-    console.log("ERROR: " + "e")
-  })
-
+  $scope.submitAdventure = function(adventure){
+    adventuresFactory.createAdventure(adventure)
+    .success( function(){
+      console.log("we did it!")
+    })
+    .error( function(){
+      console.log("ERROR: " + "e")
+    })
+  }
 
 }])

@@ -1,1 +1,13 @@
 <h1>NEW ADVENTURE!</h1>
+
+<div>
+  <form novalidate class="simple-form" name="adventureForm">
+    Where are you? <input type="text" ng-model="adventure.address" placeholder="Address or Zipcode"/><br>
+    How much time do you have? <input type="number" ng-model="adventure.time_limit" /> minutes<br>
+    <button ng-click="submitAdventure(adventure)">Get Rocking!</button>
+  </form>
+
+  <pre>
+    adventure {{ adventure | json}}
+  </pre>
+</div>

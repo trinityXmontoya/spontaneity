@@ -6,6 +6,7 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
       console.log("we did it!")
       $scope.destinationForm.$setPristine();
       $scope.destination = {};
+      // $scope.destinationConfirmedMessage = "Thanks! We've added " + destination.name + "to our list of adventures!"
     })
     .error( function(){
       console.log("OH NO")

@@ -351,18 +351,13 @@
 .welcome-block{
   background-color: #69D1EE;
   text-align: center;
-  color: black;
-}
-
-.welcome-block {
   padding: 1em;
   margin-top: 5em;
   height: 100%;
 }
 
-
 @media only screen and (min-width: 768px) {
-input {
+input, button.location, .directions_wrapper, .buttons_wrapper, .map_display_canvas {
   max-width: 50%;
 }
 }
@@ -386,30 +381,34 @@ input {
 
 /*Change placeholder values*/
 .username::-webkit-input-placeholder,
-.password::-webkit-input-placeholder
+.password::-webkit-input-placeholder,
+input.location::-webkit-input-placeholder
 {
   color: #69D1EE;
 }
 
 .username:-moz-placeholder,
-.password:-moz-placeholder
+.password:-moz-placeholder,
+input.location:-moz-placeholder
 {
   color: #69D1EE;
 }
 
 .username::-moz-placeholder,
-.password::-moz-placeholder
+.password::-moz-placeholder,
+input.location::-moz-placeholder
 {
   color: #69D1EE;
 }
 
 .username:-ms-input-placeholder,
-.password:-ms-input-placeholder
+.password:-ms-input-placeholder,
+input.location:-ms-input-placeholder
 {
   color: #69D1EE;
 }
 
-.username, .password {
+.username, .password, input.location, button.location {
   margin: 1em auto 0 auto;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
@@ -434,6 +433,18 @@ input[type=submit], button.previous, button.next, button.matrix {
   border-radius: 0.25em;
 }
 
+button.previous {
+  float: left;
+  width:50%;
+  border-right: 1.5px solid #F9FFE6;
+}
+button.next {
+  float: right;
+  width:50%;
+  border-left: 1.5px solid #F9FFE6;
+
+}
+
 .intro_title {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
@@ -450,10 +461,18 @@ input[type=submit], button.previous, button.next, button.matrix {
 }
 
 .location_text {
-  font-family: 'Josefin Slab', serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
-  margin: .5em auto;
+  margin: .25em auto 0 auto;
   color: #F9FFE6;
+}
+
+.where {
+  margin-bottom: .75em;
+}
+
+.time_text {
+  margin-top: 2em;
 }
 
 .signup_link {
@@ -473,9 +492,9 @@ button.location {
   font-family: 'Josefin Slab', serif;
   font-weight: 700;
   letter-spacing: .02em;
-  background: #F9FFE6;
-  color: #68CFED;
-  border: none;
+  background: #68CFED;
+  color: #F9FFE6;
+  border: 2px solid #F9FFE6;
   outline: none;
   font-weight: 500;
   line-height: 1.4em;
@@ -486,9 +505,71 @@ button.location {
   text-align: center;
 }
 
+.directions_wrapper {
+  border: 3px solid #F9FFE6;
+  height: 100px;
+  vertical-align: center;
+  width: 100%;
+  margin: 0 auto 20% auto;
+}
+
+.buttons_wrapper {
+  vertical-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .directions {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  margin: .5em auto;
+  margin: 2em auto 2em auto;
   color: #F9FFE6;
+  /*border: 3px solid #F9FFE6;*/
+  /*height: 150px;*/
+  /*vertical-align: center;*/
+  width: 100%;
+}
+
+
+
+.fa {
+  margin-right: .5em;
+  /*float: right;*/
+}
+
+.fa-chevron-left {
+  color: #F9FFE6;
+  float: right;
+  /*margin-bottom: 10em;*/
+}
+
+.back_button {
+  float: right;
+  margin-bottom: 200px;
+}
+
+.location-form {
+  margin: 0 auto;
+}
+
+.profile_picture {
+  background-color: #E91C30;
+  color: #F9FFE6;
+  margin: 0 auto;
+  border: 5px solid #F9FFE6;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  -ms-border-radius: 75px;
+  -o-border-radius: 75px;
+  border-radius: 75px;
+}
+
+.map_display_canvas {
+  width: 100%;
+  height: 200px;
+  border: 3px solid #F9FFE6;
+  margin: 0 auto;
 }

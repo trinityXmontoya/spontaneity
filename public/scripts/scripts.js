@@ -55,7 +55,9 @@ $(function() {
             // Push the returned directions into an array
             directionsList.push(response.routes[0].legs[0].steps)
             // Call the displayDirection function below to display one at a time
+            console.log("directions list", directionsList);
             displayDirection();
+            displayMap(lat, lng, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
           }
         });
 
@@ -96,5 +98,36 @@ $(function() {
       })
   })
 
+  function displayMap(lat, lng, start, end) {
+    var points = [];
+    points.push(start, end)
+    var latlng = new google.maps.LatLng(lat, lng);
+    console.log("latlng", latlng);
+    var mapOptions = {
+      zoom: 16,
+      center: latlng,
+      mapTypeControl: false,
+      panControl: false,
+      zoomControl: false
+    };
+
+    var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
+
+    $.each(points, function(i, pin){
+      console.log("pin", pin.k);
+      pinLat = pin.k;
+      pinLng = pin.B;
+      var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
+          marker = new google.maps.Marker({
+          position: pinLatLng,
+          map: map,
+          draggable:false,
+          animation: google.maps.Animation.DROP
+      });
+    })
+
+  }
+
 });
+
 

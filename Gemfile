@@ -15,6 +15,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'geocoder'
 
+gem 'httparty'
+
+gem 'dotenv-rails', :groups => [:development, :test]
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

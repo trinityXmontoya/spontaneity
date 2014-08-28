@@ -12,11 +12,6 @@ sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
         controller: '',
         templateUrl: 'app/views/declan.html'
       })
-    .when('/trinity',
-      {
-        controller: '',
-        templateUrl: 'app/views/trinity.html'
-      })
     .when('/new_adventure',
     {
       controller: 'AdventureCtrl',
@@ -26,6 +21,10 @@ sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
     {
       controller: 'DestinationCtrl',
       templateUrl: 'app/views/submit_destination.html'
+    })
+    .when('/begin',{
+      controller: 'AdventureCtrl',
+      templateUrl: 'app/views/begin_adventure.html'
     })
     .otherwise({ redirectTo: '/' });
 

@@ -41,7 +41,8 @@ class Adventure < ActiveRecord::Base
             "mode=#{mode}&" +
             "key=#{ENV['GOOGLE_API_KEY']}"
 
-    query += "&arrival_time=#{Time.now + time_limit.minutes}" if mode == "transit"
+    query += "&arrival_time=#{(Time.now + time_limit.minutes).to_time.to_i}" if mode == "transit"
+    puts query
     return query
   end
 
@@ -52,7 +53,7 @@ class Adventure < ActiveRecord::Base
   def google_directions(mode)
     q = build_google_query(mode)
     directions = google_route_results(q)
-    if directions["duration"]["value"] > time_limit
+    if directions["duration"]["value"] > time_limit.minutes
       google_directions("transit")
     end
     return directions

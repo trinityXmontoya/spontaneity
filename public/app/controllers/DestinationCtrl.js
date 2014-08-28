@@ -3,7 +3,7 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
   $scope.submitDestination = function(destination) {
     destinationsFactory.createDestination(destination)
     .success( function(){
-      console.log("we did it!")
+      console.log("destination succesfully created!")
       $scope.destinationForm.$setPristine();
       $scope.destination = {};
       // $scope.destinationConfirmedMessage = "Thanks! We've added " + destination.name + "to our list of adventures!"

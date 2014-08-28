@@ -10,7 +10,7 @@ class AdventuresController < ApplicationController
     adventure = Adventure.new(adventure_params)
     adventure.select_destination
     if adventure.save
-      render json: adventure, status: :created, location: adventure
+      render json: adventure.google_directions("walking")
     else
       render json: adventure.errors, status: :unprocessable_entity
     end

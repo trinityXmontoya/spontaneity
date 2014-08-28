@@ -6,18 +6,18 @@ class Adventure < ActiveRecord::Base
 
   def select_destination
     options = self.initial_filtering
-    self.destination_id = options.first.id
     # options = foursquare_search if !options
-    # google_filter(options)
+    # options = google_filter(options)
+    self.destination_id = options.first.id
+    self.user_id = 1
   end
-
 
   def foursquare_search
     # Declans foursquare search
   end
 
   def initial_filtering
-    Destination.near(coords(location), max_mile_range).limit(5)
+    Destination.near(coords, max_mile_range)
     # Destination.joins(:adventures).limit(5).where('adventures.user_id != ?', user.id).near(coords(location),mile_range)
   end
 
@@ -25,13 +25,37 @@ class Adventure < ActiveRecord::Base
     time_limit/AVG_MILE_TIME
   end
 
-  # get coordinates from user entered location (zipcode or address)
   def coords
-    Geocoder.coordinates(location)
+    Geocoder.coordinates(start_location)
   end
 
-  def google_filter
-    # google directions matrix, for front-end
+  def escape_addr(addr)
+    addr.downcase.gsub(" ", "+")
+  end
+
+  def build_google_query(mode)
+    destination_coords = "#{destination.lat},#{destination.long}"
+    query = "https://maps.googleapis.com/maps/api/directions/json?" +
+            "origin=#{escape_addr(start_location)}&" +
+            "destination=#{destination_coords}&" +
+            "mode=#{mode}&" +
+            "key=#{ENV['GOOGLE_API_KEY']}"
+
+    query += "&arrival_time=#{Time.now + time_limit.minutes}" if mode == "transit"
+    return query
+  end
+
+  def google_route_results(query)
+    HTTParty.get(query)["routes"][0]["legs"][0]
+  end
+
+  def google_directions(mode)
+    q = build_google_query(mode)
+    directions = google_route_results(q)
+    if directions["duration"]["value"] > time_limit
+      google_directions("transit")
+    end
+    return directions
   end
 
 end

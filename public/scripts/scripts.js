@@ -8,19 +8,6 @@ $(function() {
 
   var pos;
 
-      // newMap: function(ev){
-      // var mapInput = $(ev.currentTarget).serializeObject();
-      // $(ev.currentTarget).val('');
-      // var mapName = mapInput.map_name;
-      // var Map = new Comb.Models.Map({
-      // // var Map = ({
-      //   name: mapName,
-      //   creator_id: responseUserId,
-      //   user_id: responseUserId,
-      //   map_lat:'',
-      //   map_long:'',
-      //   pins:''
-      // });
   $(document).on("submit","form.location_form", function(ev){
     var locationInput = $(".location").val();
     console.log("locationInput", locationInput);
@@ -85,11 +72,6 @@ $(function() {
 
   // *** Click listeners ***
 
- // Get Google Maps directions upon click of 'declan'
-  // $(document).on("submit","form.location_form", function(){
-  //   initialize();
-  // })
-
   // Next button. Adds to counter to iterate through steps of journey
   $(document).on('click','button.next', function(){
       counter ++;
@@ -106,19 +88,9 @@ $(function() {
 
   $(document).on('click','button.matrix', function(){
     $.ajax({
-        url:'http://open.mapquestapi.com/directions/v2/routematrix?key=Fmjtd%7Cluur250zl1%2C85%3Do5-9w2l0r&json={locations:[{latLng:{lat:54.0484068,lng:-2.7990345}},{latLng:{lat:53.9593817,lng:-1.0814175}},{latLng:{lat:53.9593817,lng:-1.0514175}},{latLng:{lat:53.9593817,lng:-1.0114175}}],options:{allToAll:false}}',
+        url:'http://open.mapquestapi.com/directions/v2/routematrix?key=APIKEYHERE&routeType=multimodal&json={locations:[{latLng:{lat:40.667187,lng:-73.976432}},{latLng:{lat:40.706086,lng:-73.996864}},{latLng:{lat:40.742037,lng:-73.987563}},{latLng:{lat:40.748441,lng:-73.985664}}],options:{allToAll:false,manyToOne:true}}',
         dataType: 'json',
         method: 'GET'
-
-        // {
-        //        locations:
-        //          [
-        //           {latLng:{lat: 54.0484068, lng: -2.7990345}},
-        //           {latLng:{lat: 53.9593817, lng: -1.0814175}},
-        //           {latLng:{lat: 53.9593817, lng: -1.0514175}},
-        //           {latLng:{lat: 53.9593817, lng: -1.0114175}}
-        //          ]
-        //       }
       }).done(function(results){
         console.log("results", results);
       })

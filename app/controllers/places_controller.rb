@@ -6,6 +6,7 @@ class PlacesController < ApplicationController
 
     # destination = HTTParty.get("https://api.foursquare.com/v2/venues/search?ll=#{latlng}&client_id=ODX041SVZD0HOKCUQTWTPW51PLJHPCDITK5L52BRWR2WKFCU&client_secret=SI2HU4HT0JAJNYWJZG3QA3BBSX3ZEVTSN1MJHD4HTIEWUIPU&v=20140826")
 
+
     render :json => destination
   end
 

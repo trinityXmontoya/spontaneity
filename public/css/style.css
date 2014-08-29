@@ -534,12 +534,29 @@ button.location {
 
 .fa {
   margin-right: .5em;
+  color: #F9FFE6;
   /*float: right;*/
 }
 
 .fa-chevron-left {
-  color: #F9FFE6;
+  /*color: #F9FFE6;*/
   float: right;
+  /*margin-bottom: 10em;*/
+}
+
+.fa-user {
+  /*color: #F9FFE6;*/
+  margin: 3px auto 0 auto;
+  z-index: 20;
+  /*margin-bottom: 10em;*/
+}
+
+.fa-sun-o {
+  /*color: #F9FFE6;*/
+  color: #69D1EE;
+  margin: 5px 10px 0 -6px;
+  z-index: 3;
+  position: absolute;
   /*margin-bottom: 10em;*/
 }
 
@@ -560,6 +577,7 @@ button.location {
   display: inline-block;
   width: 75px;
   height: 75px;
+  text-align: center;
   -webkit-border-radius: 75px;
   -moz-border-radius: 75px;
   -ms-border-radius: 75px;

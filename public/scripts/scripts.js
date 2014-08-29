@@ -5,7 +5,7 @@ $(function() {
   var directionsList = [];
   // There's probably a much more elegant way to do this, but using a counter to cycle through the steps in the journey.
   var counter = 0;
-
+  var markers = [];
   var pos;
 
   $(document).on("submit","form.location_form", function(ev){
@@ -74,19 +74,7 @@ $(function() {
 
   // *** Click listeners ***
 
-  // Next button. Adds to counter to iterate through steps of journey
-  $(document).on('click','button.next', function(){
-      counter ++;
-      displayDirection();
-  })
 
-  // Previous button
-  $(document).on('click','button.previous', function(){
-    if (counter > 0) {
-      counter --;
-      displayDirection();
-    }
-  })
 
   $(document).on('click','button.matrix', function(){
     $.ajax({
@@ -98,9 +86,34 @@ $(function() {
       })
   })
 
+  function deleteMarkers() {
+    $.each(markers, function(i, marker) {
+      marker.setMap(null);
+    })
+    markers = [];
+  }
+
+    function dropPins(map, start, end) {
+      var points = [];
+      points.push(start, end)
+      var bounds = new google.maps.LatLngBounds();
+      $.each(points, function(i, pin){
+        pinLat = pin.k;
+        pinLng = pin.B;
+        var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
+            marker = new google.maps.Marker({
+            position: pinLatLng,
+            map: map,
+            draggable:false,
+            animation: google.maps.Animation.DROP
+        });
+        markers.push(marker);
+        bounds.extend(marker.position);
+        map.fitBounds(bounds);
+      })
+    }
+
   function displayMap(lat, lng, start, end) {
-    var points = [];
-    points.push(start, end)
     var latlng = new google.maps.LatLng(lat, lng);
     console.log("latlng", latlng);
     var mapOptions = {
@@ -113,19 +126,25 @@ $(function() {
 
     var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
 
-    $.each(points, function(i, pin){
-      console.log("pin", pin.k);
-      pinLat = pin.k;
-      pinLng = pin.B;
-      var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
-          marker = new google.maps.Marker({
-          position: pinLatLng,
-          map: map,
-          draggable:false,
-          animation: google.maps.Animation.DROP
-      });
-    })
+    dropPins(map, start, end);
 
+      // Next button. Adds to counter to iterate through steps of journey
+  $(document).on('click','button.next', function(){
+      counter ++;
+      displayDirection();
+      deleteMarkers();
+      dropPins(map, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
+  })
+
+  // Previous button
+  $(document).on('click','button.previous', function(){
+    if (counter > 0) {
+      counter --;
+      displayDirection();
+      deleteMarkers();
+      dropPins(map, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
+    }
+  })
   }
 
 });

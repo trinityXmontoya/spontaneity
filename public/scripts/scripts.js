@@ -115,8 +115,9 @@ $(function() {
         var path = new google.maps.Polyline({
           path: pathCoords,
           geodesic: true,
-          strokeColor: '#E91C30',
-          strokeOpacity: 0.8,
+          strokeColor: '#69D1EE',
+          // strokeColor: '#E91C30',
+          strokeOpacity: 1.0,
           strokeWeight: 3
         });
         path.setMap(map);
@@ -336,6 +337,20 @@ $(function() {
     "stylers": [
       { "visibility": "on" },
       { "color": "#808080" }
+    ]
+  },{
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#590D05" }
+    ]
+  },{
+    "featureType": "road.local",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "color": "#69D1EE" },
+      { "visibility": "on" }
     ]
   }
 ];

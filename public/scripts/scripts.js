@@ -97,11 +97,13 @@ $(function() {
       var points = [];
       points.push(start, end)
       var bounds = new google.maps.LatLngBounds();
+      var pathCoords = [];
       $.each(points, function(i, pin){
         pinLat = pin.k;
         pinLng = pin.B;
         var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
-            marker = new google.maps.Marker({
+        pathCoords.push(pinLatLng);
+        marker = new google.maps.Marker({
             position: pinLatLng,
             map: map,
             draggable:false,
@@ -110,6 +112,14 @@ $(function() {
         markers.push(marker);
         bounds.extend(marker.position);
         map.fitBounds(bounds);
+        var path = new google.maps.Polyline({
+          path: pathCoords,
+          geodesic: true,
+          strokeColor: '#E91C30',
+          strokeOpacity: 0.8,
+          strokeWeight: 3
+        });
+        path.setMap(map);
       })
     }
 
@@ -124,16 +134,18 @@ $(function() {
       zoomControl: false
     };
 
-    var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
+  var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
 
-    dropPins(map, start, end);
+  dropPins(map, start, end);
 
       // Next button. Adds to counter to iterate through steps of journey
   $(document).on('click','button.next', function(){
+    if (counter < directionsList[0].length-1){
       counter ++;
       displayDirection();
       deleteMarkers();
       dropPins(map, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
+    }
   })
 
   // Previous button
@@ -145,6 +157,7 @@ $(function() {
       dropPins(map, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
     }
   })
+
   }
 
 });

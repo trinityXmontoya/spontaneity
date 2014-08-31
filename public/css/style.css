@@ -652,7 +652,7 @@ button.adventure {
 .destination_text {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: .05em;
   margin: 0 auto;
   color: #F9FFE6;
@@ -879,7 +879,7 @@ button.adventure {
 -moz-transform:skew(-30deg,0deg);
 -o-transform:skew(-30deg,0deg);
 transform:skew(-30deg,0deg);}
-
+}
 /*ROTATING RAYS*/
 
 /*Pie slices*/

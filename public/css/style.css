@@ -357,7 +357,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-input, button.location, .directions_wrapper, .buttons_wrapper, .map_display_canvas {
+input, button.location, .directions_wrapper, .buttons_wrapper, .map_display_canvas, .profile_map_canvas, .profile_gems_wrapper {
   max-width: 50%;
 }
 }
@@ -417,7 +417,7 @@ input.location:-ms-input-placeholder
   border-radius: 0.25em;
 }
 
-input[type=submit], button.previous, button.next, button.matrix {
+input[type=submit], button.previous, button.next, button.matrix, button.profile_wander {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   margin: 10px 0;
@@ -438,11 +438,15 @@ button.previous {
   width:50%;
   border-right: 1.5px solid #F9FFE6;
 }
+
 button.next {
   float: right;
   width:50%;
   border-left: 1.5px solid #F9FFE6;
+}
 
+button.profile_wander {
+  width: 100%;
 }
 
 .intro_title {
@@ -469,6 +473,10 @@ button.next {
 
 .where {
   margin-bottom: .75em;
+}
+
+.adventure_type {
+  margin: 2em 0 .75em 0;
 }
 
 .time_text {
@@ -505,12 +513,35 @@ button.location {
   text-align: center;
 }
 
-.directions_wrapper {
+button.adventure {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: #68CFED;
+  color: #F9FFE6;
+  border: 2px solid #F9FFE6;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.4em;
+  display: inline;
+  margin: 0 auto;
+  width: 30%;
+  height: 2em;
+  text-align: center;
+}
+
+.directions_wrapper, .profile_gems_wrapper {
   border: 3px solid #F9FFE6;
   height: 100px;
   vertical-align: center;
   width: 100%;
   margin: 0 auto 20% auto;
+}
+
+.profile_wander_wrapper {
+  vertical-align: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .buttons_wrapper {
@@ -519,7 +550,7 @@ button.location {
   margin: 0 auto;
 }
 
-.directions {
+.directions, .profile_gems {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   margin: 2em auto 2em auto;
@@ -562,7 +593,7 @@ button.location {
 
 .back_button {
   float: right;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .location-form {
@@ -585,9 +616,299 @@ button.location {
   border-radius: 75px;
 }
 
-.map_display_canvas {
+.map_display_canvas, .profile_map_canvas {
   width: 100%;
   height: 200px;
   border: 3px solid #F9FFE6;
   margin: 0 auto;
 }
+
+.gem_holder {
+  background-color: #E91C30;
+  color: #F9FFE6;
+  margin: 0 auto;
+  border: 5px solid #F9FFE6;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  text-align: center;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  -ms-border-radius: 75px;
+  -o-border-radius: 75px;
+  border-radius: 75px;
+}
+
+.arrival_text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  letter-spacing: .05em;
+  margin: 0 auto;
+  color: #F9FFE6;
+  width:100%;
+}
+
+.destination_text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: .05em;
+  margin: 0 auto;
+  color: #F9FFE6;
+  width:100%;
+}
+
+.fa-fw {
+  font-size: 15px;
+  display: inline-block;
+}
+
+.star-left {
+  float: left;
+  margin: 20px auto 15px auto;
+  color: #E91C30;
+}
+
+.star-right {
+  float: right;
+  margin: 20px auto 15px auto;
+  color: #E91C30;
+}
+
+.ampersand_wrapper {
+  margin: 10px auto 20px auto;
+  width: 182px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.arrived_ampersand {
+/*  float: left;*/
+  text-align: center;
+  margin: 0 0 0 15px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  /*letter-spacing: .05em;*/
+  color: #E91C30;
+
+  /*width:100%;*/
+}
+
+.arrived_ampersand_top {
+/*  float: left;*/
+  z-index: 3;
+  position: absolute;
+  text-align: center;
+  margin: 0 0 0 14.75px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  /*letter-spacing: .05em;*/
+  color: #F9FFE6;
+  /*width:100%;*/
+}
+
+.ampersand_col {
+  width: 60px;
+  float: left;
+}
+
+/*.arrival_gem_wrapper {
+  width: 100%;
+  height: 200px;
+  border: 3px solid #F9FFE6;
+  margin: 0 auto;
+}*/
+
+.arrival_gem_wrapper {
+  background-color: #E91C30;
+  color: #F9FFE6;
+  margin: 0 auto;
+  border: 5px solid #F9FFE6;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -o-border-radius: 200px;
+  border-radius: 200px;
+}
+
+.arrival_gem_wrapper_inner {
+  background-color: #F9FFE6;
+  position: absolute;
+  margin: 5px 5px;
+  width: 190px;
+  height: 190px;
+  text-align: center;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -o-border-radius: 200px;
+  border-radius: 200px;
+}
+
+.arrival_gem_wrapper_outer {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+/*RIBBON / BANNER */
+
+.ribbon {
+ font-size: 16px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 170px;
+ height: 25px;
+ font-family: 'Lato', sans-serif;
+ font-weight: 400;
+ position: relative;
+ background: #69D1EE;
+ border: 3px solid #F9FFE6;
+ color: #fff;
+ text-align: center;
+ padding: .3em .25em .5em .25em; /* Adjust to suit */
+ margin: 75px auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ background: #69D1EE;
+ border: 1.5em solid #F9FFE6;
+ z-index: -2;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #69D1EE transparent transparent transparent;
+ bottom: -1em;
+ z-index: -1;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+
+.ribbon_wrapper {
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+}
+
+/*CSS GEM*/
+#diamond {
+  position:absolute;
+  left:0;
+  right:0;
+  margin: 50px auto 0 auto;
+  width:140px;
+  height:100px;
+}
+
+#top div{
+  float:left;
+}
+#bottom div{
+  float:left;
+}
+.face {
+  height:0;
+  width:0;
+  margin-left:-22.5px;
+  margin-right:-22.5px;
+  border:25px solid transparent;
+  border-top:20px solid #69D1EE;
+  border-bottom:0px solid transparent;
+}
+
+.faceup {
+  height:0;
+  width:0;
+  border:25px solid transparent;
+  border-top:2.5px solid transparent;
+  border-bottom:20px solid #69D1EE;
+}
+
+.facedown {
+  height:0;
+  width:0;
+  margin:3.5px 0;
+  padding:0;
+  border:25px solid transparent;
+  border-top:70px solid #69D1EE;
+}
+
+.left {border-left:15px solid transparent;}
+.right {border-right:15px solid transparent;}
+
+.left2 {margin-left:27.5px;
+  margin-right:-22.5px;
+  border-right:15px solid transparent;
+  -webkit-transform:skew(30deg,0deg);
+  -moz-transform:skew(30deg,0deg);
+  -o-transform:skew(30deg,0deg);
+  transform:skew(30deg,0deg);
+}
+.right2 {margin-left:-22.5px;
+  border-left:15px solid transparent;
+-webkit-transform:skew(-30deg,0deg);
+-moz-transform:skew(-30deg,0deg);
+-o-transform:skew(-30deg,0deg);
+transform:skew(-30deg,0deg);}
+
+/*ROTATING RAYS*/
+
+/*Pie slices*/
+
+/*.arrival_gem_wrapper {
+  position: relative;
+  margin: 1em auto;
+  border: solid .5em #F9FFE6;
+  width: 13em; height: 13em;
+  border-radius: 50%;
+  background:
+    linear-gradient(36deg, #F9FFE6 42.34%, transparent 42.34%) 0 0,
+    linear-gradient(-36deg, #F9FFE6 75.48%, transparent 75.48%) 100% 0,
+        linear-gradient(36deg, transparent 24.52%, #F9FFE6 24.52%) 100% 100%,
+    #E91C30 linear-gradient(#E91C30, #E91C30) 50% 100%;
+    ;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+}*/
+/*.arrival_gem_wrapper:after {
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: -2.8em;
+  width: 5.6em; height: 5.6em;
+  border-radius: 50%;
+  background: white;
+  content: '';
+}*/
+/*.arrival_gem_wrapper:hover {
+  transform: rotate(360deg);
+}
+*/

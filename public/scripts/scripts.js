@@ -9,6 +9,8 @@ $(function() {
   var pos;
 
   $(document).on("submit","form.location_form", function(ev){
+    // For testing purposes, triggering the rendering of the profile page map here
+    displayProfileMap();
     var locationInput = $(".location").val();
     console.log("locationInput", locationInput);
     $("location").val('');
@@ -37,6 +39,7 @@ $(function() {
 
 
         console.log("data", results);
+        $(".destination_name").html("at "+"<br>"+results.response.venues[0].name+"!");
 
         var end_lat = results.response.venues[0].location.lat;
         var end_long = results.response.venues[0].location.lng;
@@ -159,6 +162,22 @@ $(function() {
       dropPins(map, directionsList[0][counter].start_point, directionsList[0][counter].end_point);
     }
   })
+
+  }
+
+  function displayProfileMap(lat, lng, start, end) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    console.log("latlng", latlng);
+    var mapOptions = {
+      zoom: 16,
+      styles: mapStyles,
+      center: latlng,
+      mapTypeControl: false,
+      panControl: false,
+      zoomControl: false
+    };
+
+  var map = new google.maps.Map($(".profile_map_canvas")[0], mapOptions);
 
   }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var sponApp = angular.module('sponApp', ['ngRoute']);
+var sponApp = angular.module('sponApp', ['ngRoute', 'google-maps']);
 
 // ROUTES
 

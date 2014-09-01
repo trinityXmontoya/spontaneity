@@ -457,8 +457,12 @@ button.profile_wander, button.profile_upload_button {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   letter-spacing: .05em;
-  margin: .5em auto 5em auto;
+  margin: .5em auto 1em auto;
   color: #F9FFE6;
+}
+
+.sightseer_logo {
+  margin: 1em auto;
 }
 
 .welcome_text {
@@ -581,7 +585,7 @@ label {
   margin: 0 auto;
 }
 
-.directions, .profile_gems {
+.directions {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   margin: 2em auto 2em auto;
@@ -592,6 +596,16 @@ label {
   width: 100%;
 }
 
+.profile_gems {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin: 2em auto 2em auto;
+  color: #F9FFE6;
+  /*border: 3px solid #F9FFE6;*/
+  /*height: 150px;*/
+  /*vertical-align: center;*/
+  width: 70%;
+}
 
 
 .fa {
@@ -842,6 +856,29 @@ button.interests {
 .sign_up_profile_picture_wrapper {
   width: 100%;
   margin: 0 auto;
+}
+
+.profile_gem_circle {
+  width: 60px;
+  height: 60px;
+  float: left;
+  background-color: #F9FFE6;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+}
+
+img.profile_gem {
+  width: 50px;
+  display: inline-block;
+  float: left;
+  margin: 17px 0 0 5px;
+}
+
+.cream {
+  background-color: #69D1EE;
 }
 /*RIBBON / BANNER */
 

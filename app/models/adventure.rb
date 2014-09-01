@@ -9,7 +9,7 @@ class Adventure < ActiveRecord::Base
   def select_destination
     options = self.initial_filtering
     puts options
-    options = foursquare_search if !options
+    # options = foursquare_search if !options
     # options = google_filter(options)
     self.destination_id = options.id
     self.user_id = 1

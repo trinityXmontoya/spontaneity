@@ -8,8 +8,13 @@ $(function() {
   var markers = [];
   var pos;
 
-  $(document).on("submit","form.location_form", function(ev){
+  $(document).on("submit","form.location_form", function(event){
     // For testing purposes, triggering the rendering of the profile page map here
+
+  console.log( $( this ).serializeArray() );
+  event.preventDefault();
+
+
     displayProfileMap();
     var locationInput = $(".location").val();
     console.log("locationInput", locationInput);

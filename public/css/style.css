@@ -357,7 +357,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-input, button.location, .directions_wrapper, .buttons_wrapper, .map_display_canvas, .profile_map_canvas, .profile_gems_wrapper {
+input, button.location, .directions_wrapper, .buttons_wrapper, .interests_buttons_wrapper, .map_display_canvas, .profile_map_canvas, .profile_gems_wrapper, button.profile_upload_button {
   max-width: 50%;
 }
 }
@@ -380,6 +380,7 @@ input {
 }
 
 /*Change placeholder values*/
+.email::-webkit-input-placeholder,
 .username::-webkit-input-placeholder,
 .password::-webkit-input-placeholder,
 input.location::-webkit-input-placeholder
@@ -387,6 +388,7 @@ input.location::-webkit-input-placeholder
   color: #69D1EE;
 }
 
+.email:-moz-placeholder,
 .username:-moz-placeholder,
 .password:-moz-placeholder,
 input.location:-moz-placeholder
@@ -394,6 +396,7 @@ input.location:-moz-placeholder
   color: #69D1EE;
 }
 
+.email::-moz-placeholder,
 .username::-moz-placeholder,
 .password::-moz-placeholder,
 input.location::-moz-placeholder
@@ -401,6 +404,7 @@ input.location::-moz-placeholder
   color: #69D1EE;
 }
 
+.email:-ms-input-placeholder,
 .username:-ms-input-placeholder,
 .password:-ms-input-placeholder,
 input.location:-ms-input-placeholder
@@ -408,7 +412,7 @@ input.location:-ms-input-placeholder
   color: #69D1EE;
 }
 
-.username, .password, input.location, button.location {
+.email, .username, .password, input.location, button.location {
   margin: 1em auto 0 auto;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
@@ -417,7 +421,7 @@ input.location:-ms-input-placeholder
   border-radius: 0.25em;
 }
 
-input[type=submit], button.previous, button.next, button.matrix, button.profile_wander {
+input[type=submit], button.previous, button.next, button.matrix, button.profile_wander, button.profile_upload_button {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   margin: 10px 0;
@@ -445,7 +449,7 @@ button.next {
   border-left: 1.5px solid #F9FFE6;
 }
 
-button.profile_wander {
+button.profile_wander, button.profile_upload_button {
   width: 100%;
 }
 
@@ -513,7 +517,25 @@ button.location {
   text-align: center;
 }
 
-button.adventure {
+label.adventure, label.current_location {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: #68CFED;
+  color: #F9FFE6;
+  border: 2px solid #F9FFE6;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.4em;
+  display: inline;
+  margin: 0 auto;
+  width: 30%;
+  height: 2em;
+  padding: 0.25em;
+  text-align: center;
+}
+
+.adventure {
   font-family: 'Josefin Slab', serif;
   font-weight: 700;
   letter-spacing: .02em;
@@ -528,6 +550,15 @@ button.adventure {
   width: 30%;
   height: 2em;
   text-align: center;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    display:none;
+}
+
+label {
+    cursor: pointer;
+    line-height:32px;
 }
 
 .directions_wrapper, .profile_gems_wrapper {
@@ -758,6 +789,60 @@ button.adventure {
   width: 100%;
 }
 
+.interests {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.interests_text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin: .25em auto 0 auto;
+  color: #F9FFE6;
+}
+
+.interests_column {
+  float: left;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.interests_buttons_wrapper {
+  vertical-align: center;
+  width: 100%;
+  margin: 1em auto 0 auto;
+}
+
+button.interests {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: #68CFED;
+  color: #F9FFE6;
+  border: 2px solid #F9FFE6;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.4em;
+  display: inline;
+  margin: 2px auto;
+  width: 30%;
+  height: 2em;
+  text-align: center;
+}
+
+.sign_up_title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: .05em;
+  margin: .5em auto;
+  color: #F9FFE6;
+}
+
+.sign_up_profile_picture_wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
 /*RIBBON / BANNER */
 
 .ribbon {
@@ -880,6 +965,8 @@ button.adventure {
 -o-transform:skew(-30deg,0deg);
 transform:skew(-30deg,0deg);}
 }
+
+
 /*ROTATING RAYS*/
 
 /*Pie slices*/

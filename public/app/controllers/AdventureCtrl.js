@@ -2,36 +2,43 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
 
   $scope.directions = Directions;
 
-
   $scope.submitAdventure = function(adventure){
     adventuresFactory.createAdventure(adventure)
     .success( function(data){
       $location.path('/begin')
       $scope.directions.steps = data.steps
-      googleMaps.init($scope.directions)
+      $scope.setMap();
+      // googleMaps.init($scope.directions)
     })
     .error( function(){
       console.log("ERROR: " + "e")
+      $location.path('/new_adventure')
     })
   };
 
-  $scope.map = {
-    center: {
-        latitude: 42.3581,
-        longitude: 71.0636
-    },
-    pan: false,
-    zoom: 16,
-    options: {
-      styles: googleMaps.mapStyles,
-      zoomControl: false,
-      mapTypeControl: false,
-      panControl: false,
-      backgroundColor: "purple",
-      minZoom: 14,
-      streetViewControl: false
+  $scope.setMap = function(){
+    $scope.map =
+      {
+        center: currentCenter,
+        pan: false,
+        zoom: 16,
+        options: {
+          // styles: googleMaps.mapStyles,
+          zoomControl: false,
+          mapTypeControl: false,
+          panControl: false,
+          backgroundColor: "purple",
+          minZoom: 14,
+          streetViewControl: false
+        }
     }
-  };
+  }
 
+  $scope.counter = 0;
+
+  $scope.currentCenter = {
+        // latitude: $scope.directions.steps[this.counter]["start_location"]["lat"],
+        // longitude: $scope.directions.steps[this.counter]["start_location"]["lng"]
+  }
 
 }])

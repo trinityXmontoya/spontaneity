@@ -4,14 +4,20 @@ gem 'rails', '4.1.4'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
+# gem 'spring', :group => :development
 
 gem 'pg'
+
+gem 'httparty'
 
 gem 'activerecord-postgres-hstore'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
+
+gem 'geocoder'
+
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" x-ng-app="SponApp">
+<html lang="en" x-ng-app="sponApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Spontaneity</title>
-
+    <base href="/">
     <link href="css/style.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
-    <a href="#/declan">Declan</a>
-    <a href="#/trinity">Trinity</a>
+    <a href="/declan">Declan</a>
+    <a href="/trinity">Trinity</a>
     <a href="/">Home</a>
+
+    <a href="/new_adventure">Go on an Adventure!</a>
+    <a href="/submit_destination">Add a Destination!</a>
 
     <div x-ng-view></div x-ng-view>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
+    <script src="/scripts/angular-google-maps.min.js"></script>
+    <script src='/scripts/scripts.js'></script>
     <script src="/app.js"></script>
+    <script src="app/controllers/AdventureCtrl.js"></script>
+    <script src="app/controllers/DestinationCtrl.js"></script>
+    <script src="app/services/adventuresFactory.js"></script>
+    <script src="app/services/destinationsFactory.js"></script>
+    <script src="app/services/directionsFactory.js"></script>
+    <script src="app/services/googleMapsFactory.js"></script>
   </body>
 </html>

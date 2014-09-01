@@ -1,3 +1,11 @@
+/*GOOGLE MAP*/
+
+.angular-google-map-container {
+  height: 200px;
+}
+
+
+
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400,700);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:100,400,700);
 /*  SECTIONS  ============================================================================= */
@@ -1036,4 +1044,3 @@ transform:skew(-30deg,0deg);}
   transform: rotate(360deg);
 }
 */
-.angular-google-map-container { height: 200px; width: 200px;}

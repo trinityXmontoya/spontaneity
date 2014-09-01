@@ -5,7 +5,7 @@ IT'S only just begun!
 
 IM THE MAP
 
-<div class="welcome-block">
+<div class="welcome-block" ng-init="loadMap()">
   <div class="section group">
     <div class='col span_3_of_12'>
       <div class="back_button">
@@ -38,10 +38,16 @@ IM THE MAP
         </div>
       </div>
       <div class="map_display_canvas">
+        <google-map center="map.center" zoom="map.zoom" options="mapOptions">
+          <marker idKey='1'
+        coords='markerCoords(1)'></marker>
+          <marker idKey='2'
+        coords='markerCoords(2)'></marker>
+        </google-map>
       </div>
       <div class="buttons_wrapper">
-        <button class="previous">PREV</button>
-        <button class="next">NEXT</button>
+        <button ng-click="step('prev')" class="previous">PREV</button>
+        <button ng-click="step('next')"class="next">NEXT</button>
       </div>
       <!-- <button class="matrix">matrix</button> -->
     </div>
@@ -52,6 +58,3 @@ IM THE MAP
   </div>
 </div>
 
-
-<google-map center="map.center" zoom="map.zoom">
-</google-map>

@@ -1,103 +1,103 @@
 sponApp.factory("googleMaps", function(){
-  var factory = {
+  var factory = {}
 
-    directionsList: [],
-    counter: 0,
-    markers: [],
-    lat: 42.3461507,
-    long: -71.1358657,
-    // pos:,
+//     directionsList: [],
+//     counter: 0,
+//     markers: [],
+//     lat: 42.3461507,
+//     long: -71.1358657,
+//     // pos:,
 
-    init: function(directions){
-      directionsList = directions.steps
-      console.log("directions list", directionsList);
-      this.displayDirection();
-      this.displayMap(this.lat, this.lng, directionsList[this.counter].start_point, directionsList[this.counter].end_point);
-    },
+//     init: function(directions){
+//       directionsList = directions.steps
+//       console.log("directions list", directionsList);
+//       this.displayDirection();
+//       this.displayMap(this.lat, this.lng, directionsList[this.counter].start_point, directionsList[this.counter].end_point);
+//     },
 
-    // Display the current direction in the list.
-    displayDirection: function() {
-      $(".directions").html(directionsList[this.counter]["html_instructions"])
-    },
+//     // Display the current direction in the list.
+//     displayDirection: function() {
+//       $(".directions").html(directionsList[this.counter]["html_instructions"])
+//     },
 
-    // *** Click listeners ***
+//     // *** Click listeners ***
 
-    deleteMarkers: function() {
-      $.each(markers, function(i, marker) {
-        marker.setMap(null);
-      })
-      markers = [];
-    },
+//     deleteMarkers: function() {
+//       $.each(markers, function(i, marker) {
+//         marker.setMap(null);
+//       })
+//       markers = [];
+//     },
 
-    dropPins: function(map, start, end) {
-      var points = [];
-      points.push(start, end)
-      var bounds = new google.maps.LatLngBounds();
-      var pathCoords = [];
-      $.each(points, function(i, pin){
-        pinLat = pin.k;
-        pinLng = pin.B;
-        var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
-        pathCoords.push(pinLatLng);
-        marker = new google.maps.Marker({
-            position: pinLatLng,
-            map: map,
-            draggable:false,
-            animation: google.maps.Animation.DROP
-        });
-        markers.push(marker);
-        bounds.extend(marker.position);
-        map.fitBounds(bounds);
-        var path = new google.maps.Polyline({
-          path: pathCoords,
-          geodesic: true,
-          strokeColor: '#69D1EE',
-          // strokeColor: '#E91C30',
-          strokeOpacity: 1.0,
-          strokeWeight: 3
-        });
-        path.setMap(map);
-      })
-    },
+//     dropPins: function(map, start, end) {
+//       var points = [];
+//       points.push(start, end)
+//       var bounds = new google.maps.LatLngBounds();
+//       var pathCoords = [];
+//       $.each(points, function(i, pin){
+//         pinLat = pin.k;
+//         pinLng = pin.B;
+//         var pinLatLng = new google.maps.LatLng(pinLat, pinLng);
+//         pathCoords.push(pinLatLng);
+//         marker = new google.maps.Marker({
+//             position: pinLatLng,
+//             map: map,
+//             draggable:false,
+//             animation: google.maps.Animation.DROP
+//         });
+//         markers.push(marker);
+//         bounds.extend(marker.position);
+//         map.fitBounds(bounds);
+//         var path = new google.maps.Polyline({
+//           path: pathCoords,
+//           geodesic: true,
+//           strokeColor: '#69D1EE',
+//           // strokeColor: '#E91C30',
+//           strokeOpacity: 1.0,
+//           strokeWeight: 3
+//         });
+//         path.setMap(map);
+//       })
+//     },
 
-    displayMap: function(lat, lng, start, end) {
-      var latlng = new google.maps.LatLng(lat, lng);
-      console.log("latlng", latlng);
-      var mapOptions = {
-        zoom: 16,
-        styles: this.mapStyles,
-        center: latlng,
-        mapTypeControl: false,
-        panControl: false,
-        zoomControl: false
-      };
-      var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
+//     displayMap: function(lat, lng, start, end) {
+//       var latlng = new google.maps.LatLng(lat, lng);
+//       console.log("latlng", latlng);
+//       var mapOptions = {
+//         zoom: 16,
+//         styles: this.mapStyles,
+//         center: latlng,
+//         mapTypeControl: false,
+//         panControl: false,
+//         zoomControl: false
+//       };
+//       var map = new google.maps.Map($(".map_display_canvas")[0], mapOptions);
 
-      this.dropPins(map, start, end);
+//       this.dropPins(map, start, end);
 
-          // Next button. Adds to this.counter to iterate through steps of journey
-      $(document).on('click','button.next', function(){
-        var _this = this;
-        if (this.counter < directionsList.length-1){
-          _this.counter ++;
-          _this.displayDirection();
-          _this.deleteMarkers();
-          _this.dropPins(map, _this.directionsList[_this.counter].start_point, directionsList[_this.counter].end_point);
-        }
-      })
+//           // Next button. Adds to this.counter to iterate through steps of journey
+//       $(document).on('click','button.next', function(){
+//         var _this = this;
+//         if (this.counter < directionsList.length-1){
+//           _this.counter ++;
+//           _this.displayDirection();
+//           _this.deleteMarkers();
+//           _this.dropPins(map, _this.directionsList[_this.counter].start_point, directionsList[_this.counter].end_point);
+//         }
+//       })
 
-      // Previous button
-      $(document).on('click','button.previous', function(){
-        if (this.counter > 0) {
-          this.counter --;
-          displayDirection();
-          deleteMarkers();
-          dropPins(map, directionsList[this.counter].start_point, directionsList[this.counter].end_point);
-        }
-      })
-    },
+//       // Previous button
+//       $(document).on('click','button.previous', function(){
+//         if (this.counter > 0) {
+//           this.counter --;
+//           displayDirection();
+//           deleteMarkers();
+//           dropPins(map, directionsList[this.counter].start_point, directionsList[this.counter].end_point);
+//         }
+//       })
+//     },
 
-    mapStyles: [
+    factory.mapStyles = [
       {
         "featureType": "administrative.country",
         "elementType": "geometry.fill",
@@ -290,6 +290,6 @@ sponApp.factory("googleMaps", function(){
       }
     ]
 
-  }
+//   }
   return factory;
 });

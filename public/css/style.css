@@ -131,6 +131,10 @@
 /* Custom, iPhone Retina */
   @media only screen and (min-width : 320px) {
 
+    .welcome-block{
+      min-width: 515px;
+    }
+
      .span_12_of_12 {
       width: 100%;
     }
@@ -167,15 +171,15 @@
       width: 32.26%;
     }
 
-    .span_3_of_12 {
+/*    .span_3_of_12 {
       width: 23.8%;
-    }
+    }*/
 
     .span_2_of_12 {
       width: 15.33%;
     }
 
-    .span_1_of_12 {
+    .span_1_of_12, .span_3_of_12 {
       width: 6.86%;
     }
   }
@@ -183,6 +187,10 @@
   /* Extra Small Devices, Phones */
   @media only screen and (min-width : 480px) {
     /*  GRID OF TWELVE   ============================================================================= */
+
+    .welcome-block{
+      min-width: 515px;
+    }
 
     .span_12_of_12 {
       width: 100%;
@@ -228,7 +236,7 @@
       width: 15.33%;
     }
 
-    .span_1_of_12 {
+    .span_1_of_12, {
       width: 6.86%;
     }
   }
@@ -341,12 +349,17 @@
 
   /* Large Devices, Wide Screens */
   @media only screen and (min-width : 1200px) {
-
+    input, button.location, .directions_wrapper, .buttons_wrapper, .interests_buttons_wrapper, .map_display_canvas, .profile_map_canvas, .profile_gems_wrapper, button.profile_upload_button {
+  max-width: 280px;
+}
   }
 
 
 /*  CUSTOM CODE  ============================================================================= */
 
+body {
+  background-color: #69D1EE;
+}
 
 .welcome-block{
   background-color: #69D1EE;
@@ -358,7 +371,7 @@
 
 @media only screen and (min-width: 768px) {
 input, button.location, .directions_wrapper, .buttons_wrapper, .interests_buttons_wrapper, .map_display_canvas, .profile_map_canvas, .profile_gems_wrapper, button.profile_upload_button {
-  max-width: 50%;
+  max-width: 280px;
 }
 }
 
@@ -463,6 +476,10 @@ button.profile_wander, button.profile_upload_button {
 
 .sightseer_logo {
   margin: 1em auto;
+}
+
+.sightseer_avatar {
+  margin: 1.25em auto 0.75em auto;
 }
 
 .welcome_text {
@@ -646,19 +663,35 @@ label {
 }
 
 .profile_picture {
+  background-color: #74CFF1;
+  color: #F9FFE6;
+  margin: 2px auto 0 auto;
+  border: 3px solid #F9FFE6;
+  display: inline-block;
+  width: 78px;
+  height: 100px;
+  text-align: center;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.profile_picture_wrapper {
   background-color: #E91C30;
   color: #F9FFE6;
   margin: 0 auto;
   border: 5px solid #F9FFE6;
   display: inline-block;
-  width: 75px;
-  height: 75px;
+  width: 90px;
+  height: 110px;
   text-align: center;
-  -webkit-border-radius: 75px;
-  -moz-border-radius: 75px;
-  -ms-border-radius: 75px;
-  -o-border-radius: 75px;
-  border-radius: 75px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
 }
 
 .map_display_canvas, .profile_map_canvas {

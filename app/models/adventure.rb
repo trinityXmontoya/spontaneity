@@ -1,5 +1,5 @@
 class Adventure < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :destination
 
   AVG_MILE_TIME = 15
@@ -85,6 +85,22 @@ class Adventure < ActiveRecord::Base
       google_directions("transit")
     end
     return directions
+  end
+
+
+  # COUNTER CACHE METHODS
+
+  def after_save
+    self.update_counter_cache
+  end
+
+  def after_destroy
+    self.update_counter_cache
+  end
+
+  def update_counter_cache
+    self.user.adventures_count = self.user.adventures.count( :conditions => ["status = completed"])
+    self.user.save
   end
 
 end

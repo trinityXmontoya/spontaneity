@@ -1,5 +1,17 @@
 <!-- Profile Page -->
 
+
+{{user}}
+
+<!-- to get the users destinations you can just do
+
+{{user.destinations}}
+
+if you want to loop through the users visited destinations and do something specific it can be -->
+
+<div ng-model="user" ng-repeat="dest in user.visited_destinations">
+  BAM: {{dest}}
+</div>
 <div class="welcome-block">
   <div class="section group">
     <div class='col span_3_of_12'>

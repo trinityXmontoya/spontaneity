@@ -16,7 +16,7 @@ sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
       controller: 'UserCtrl',
       templateUrl: 'app/views/sign_up.html'
     })
-    .when('/profile',{
+    .when('/users/:userId',{
       controller: 'UserCtrl',
       templateUrl: 'app/views/profile.html'
     })

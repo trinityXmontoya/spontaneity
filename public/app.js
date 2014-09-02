@@ -2,13 +2,13 @@
 
 var sponApp = angular.module('sponApp', ['ngRoute', 'ngCookies', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
 
-// HashBang Hacky Fix
-
-angular.module('sponApp').config(['$routeProvider', function($routeProvider) {
-   $routeProvider.
-     when('/', {
+// ROUTES
+sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function ($routeProvider, $locationProvider, flashProvider){
+  // HashBang Hacky Fix
+  $routeProvider
+    .when('/', {
        templateUrl: "app/views/home.html",
-       controller: "...",
+       // controller: " ",
        // Add our redirection handler, normally this is used
        // in otherwise routes, but we can co-opt it here
        redirectTo: function(current, path, search){
@@ -23,14 +23,7 @@ angular.module('sponApp').config(['$routeProvider', function($routeProvider) {
            return "/"
          }
        }
-     }).otherwise({redirectTo:"/"});
-}])
-
-// ROUTES
-
-sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function ($routeProvider, $locationProvider, flashProvider){
-
-  $routeProvider
+     })
     .when('/declan',
       {
         controller: '',

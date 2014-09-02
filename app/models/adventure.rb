@@ -83,10 +83,14 @@ class Adventure < ActiveRecord::Base
 
   def google_directions(mode)
     q = google_query(mode)
-    directions = google_route_results(q)
-    if directions["duration"]["value"] > time_limit.minutes
+    res = google_route_results(q)
+    if res["duration"]["value"] > time_limit.minutes
       google_directions("transit")
     end
+    directions = {
+      destination: self.destination.name,
+      directions: res
+    }
     return directions
   end
 

@@ -6,9 +6,8 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
     adventuresFactory.createAdventure(adventure)
     .success( function(data){
       $location.path('/begin')
-      $scope.directions.steps = data.steps
-      // googleMaps.init($scope.directions)
-      // $scope.setMap();
+      $scope.directions.steps = data.directions.steps
+      $scope.directions.name = data.destination
     })
     .error( function(){
       console.log("ERROR: " + "e")
@@ -61,13 +60,17 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
     if ($scope.directions.steps != undefined) {
       directionsLength = $scope.directions.steps.length
       if ($scope.counter == directionsLength){
-        $scope.completeAdventure()
+        $scope.completeAdventure();
       }
       else {
         displayCurrentDirections();
       }
     }
   });
+
+  $scope.displayFinalMsg = function(){
+    $(".destination_name").html("at "+"<br>"+ $scope.directions.name +"!");
+  }
 
   var displayCurrentDirections = function() {
     var directions = $scope.directions.steps[$scope.counter]["html_instructions"]

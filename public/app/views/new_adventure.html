@@ -25,8 +25,9 @@
     <div class="col span_6_of_12 feature">
       <form class="location_form">
         <h3 class="location_text where"><i class="fa fa-map-marker"></i>where are you?</h3>
-        <input type="checkbox" value="current_location" name="current_location" id="current_location"/><label for="current_location" <span class="current_location"><i class="fa fa-crosshairs"></i>CURRENT</span></label>
-        <h3 class="location_text">or</h3>
+
+        <button class="current_location" ng-click="getCoords()"><i class="fa fa-crosshairs"></i>CURRENT</button>
+        <br>
         <input ng-model="adventure.start_location" class="location" name="location" type="text" placeholder='ENTER LOCATION'/>
         <!-- <h3 class="location_text adventure_type"><i class="fa fa-star-o"></i>adventure type?</h3>
 <!--           <input type="radio" class ="adventure" name="adventure" value="food"">

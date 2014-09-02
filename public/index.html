@@ -19,7 +19,11 @@
     <a href="/complete">Complete adventure</a>
     <a href="/submit_destination">Add a Destination!</a>
 
-    <div x-ng-view></div x-ng-view>
+    <div flash-alert active-class="in" class="alert fade" duration="0">
+        <span class="alert-message">{{flash.message}}</span>
+    </div>
+    <div x-ng-view>
+    </div x-ng-view>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
@@ -27,6 +31,7 @@
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
     <script src="/scripts/angular-google-maps.min.js"></script>
+    <script src="/scripts/angular-flash.min.js"></script>
     <script src="/app.js"></script>
     <script src="app/controllers/UserCtrl.js"></script>
     <script src="app/controllers/AdventureCtrl.js"></script>

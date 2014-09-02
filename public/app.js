@@ -1,10 +1,10 @@
 'use strict';
 
-var sponApp = angular.module('sponApp', ['ngRoute', 'google-maps']);
+var sponApp = angular.module('sponApp', ['ngRoute', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
 
 // ROUTES
 
-sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
+sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function ($routeProvider, $locationProvider, flashProvider){
 
   $routeProvider
     .when('/declan',

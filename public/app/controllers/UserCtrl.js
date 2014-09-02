@@ -19,11 +19,11 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
       $scope.userSignUpForm.$setPristine();
       $scope.user = {};
       $location.path('/users/'+data.id);
-      flash.success = 'Do it live!';
+      flash.success = 'Succesfully signed up';
     })
     .error( function(data){
       console.log("there seems to have been an error")
-      flash.error = 'Fail!';
+      flash.error = 'There was an error with your entered info, please double check.';
     })
   }
 

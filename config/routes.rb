@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :destinations
   resources :interests, only: [:index]
   resources :users, except: [:index]
+  post '/users/verify' => 'users#verify_credentials'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

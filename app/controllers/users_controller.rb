@@ -5,11 +5,6 @@ class UsersController < ApplicationController
     render json: user, :include => {:visited_destinations => {only: [:name,:lat,:long]}}
   end
 
-  def new
-    user = User.new
-    render json: user
-  end
-
   def create
     user = User.new(user_params)
     if user.save
@@ -19,9 +14,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    user = User.find(params[:id])
-    render json: user
+  def verify_credentials
+    user = User.find_by_username(user_params["username"])
+    if user && user.authenticate(user_params["password"])
+      render json: user
+    else
+      render json: self.status = 401
+    end
   end
 
   def update

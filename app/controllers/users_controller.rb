@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     user = User.find_by_username(user_params["username"])
     if user && user.authenticate(user_params["password"])
       session[:user_id] = user.id
-      puts user
+      puts "THE SESSION"
+      puts session
       puts session[:user_id]
       render json: user
     else

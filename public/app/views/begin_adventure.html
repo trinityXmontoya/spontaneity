@@ -5,7 +5,7 @@ IT'S only just begun!
 
 IM THE MAP
 
-<div class="welcome-block" ng-init="loadMap()">
+<div class="welcome-block" ng-init="displayCurrentDirections()">
   <div class="section group">
     <div class='col span_3_of_12'>
       <div class="back_button">
@@ -38,7 +38,7 @@ IM THE MAP
         </div>
       </div>
       <div class="map_display_canvas">
-        <google-map center="map.center" zoom="map.zoom" options="mapOptions">
+        <google-map center="currentCenter()" zoom="map.zoom" options="mapOptions">
           <marker idKey='1'
         coords='markerCoords(1)'></marker>
           <marker idKey='2'

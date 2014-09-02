@@ -16,15 +16,29 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
     })
   };
 
-  $scope.map =
-    {
-      center: {
-        latitude: 42.3460777,
-        longitude: -71.1358121
-      },
+  $scope.getCoords = function(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("current position", position);
+
+      // Get coordinates for current position
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      var start = lat+","+lng;
+    })
+  };
+
+  $scope.map = {
       pan: false,
       zoom: 16,
   };
+
+  $scope.currentCenter = function(){
+    start_location = $scope.directions.steps[$scope.counter]["start_location"]
+    return {
+        latitude: start_location.lat,
+        longitude: start_location.lng
+      }
+  }
 
   $scope.mapOptions = {
         styles: googleMaps.mapStyles,
@@ -44,13 +58,13 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
   };
 
   $scope.$watch('counter', function(){
-    if ($scope.counter !== 0) {
+    if ($scope.directions.steps != undefined) {
       directionsLength = $scope.directions.steps.length
       if ($scope.counter == directionsLength){
         $scope.completeAdventure()
       }
       else {
-        loadMap();
+        displayCurrentDirections();
       }
     }
   });
@@ -58,10 +72,6 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
   var displayCurrentDirections = function() {
     var directions = $scope.directions.steps[$scope.counter]["html_instructions"]
     $(".directions").html(directions)
-  };
-
-  $scope.loadMap = function(){
-    displayCurrentDirections();
   };
 
   $scope.markerCoords = function(num){

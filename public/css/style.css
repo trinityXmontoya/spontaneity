@@ -892,22 +892,22 @@ button.interests {
 }
 
 .profile_gem_circle {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   float: left;
   background-color: #F9FFE6;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  -ms-border-radius: 60px;
-  -o-border-radius: 60px;
-  border-radius: 60px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  border-radius: 40px;
 }
 
 img.profile_gem {
-  width: 50px;
+  width: 33px;
   display: inline-block;
   float: left;
-  margin: 17px 0 0 5px;
+  margin: 11px 0 0 3px;
 }
 
 .cream {

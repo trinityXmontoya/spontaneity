@@ -10,7 +10,7 @@ $(function() {
 
   $(document).on("submit","form.login_form", function(){
     console.log("working");
-    var user_adventures = 4;
+    var user_adventures = 8;
 
     if (user_adventures < 5) {
       for (var i = 0; i < user_adventures; i++) {
@@ -33,7 +33,7 @@ $(function() {
       for (var i = 0; i < user_adventures-5; i++) {
 
           $(".profile_gems").append(
-            "<p>5</p><div class='profile_gem_circle'> \
+            "<div class='profile_gem_circle'> \
               <img class='profile_gem' src='/img/gem_1_blue.svg'></img> \
             </div>"
           );

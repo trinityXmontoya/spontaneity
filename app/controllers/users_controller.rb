@@ -27,6 +27,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_user
+    if current_user
+      render json: current_user
+    else
+      render json: self.status = 404
+    end
+  end
+
+  def logout
+    user = User.find(user_params["id"])
+    puts user
+    if user == current_user
+      session[:user_id] == nil
+      render json: self.status = 200
+    else
+      render json: self.status = 401
+    end
+  end
+
   def update
     user = User.find(params[:id])
     if user.update(user_params)

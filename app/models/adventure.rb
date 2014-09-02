@@ -11,7 +11,6 @@ class Adventure < ActiveRecord::Base
     options = foursquare_search_and_add if !options
     # options = google_filter(options)
     self.destination_id = options.id
-    self.user_id = 1
   end
 
   def foursquare_query

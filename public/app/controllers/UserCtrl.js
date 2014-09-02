@@ -1,15 +1,23 @@
-sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', function($scope, usersFactory, $routeParams, $location, flash){
+sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', '$cookieStore', function($scope, usersFactory, $routeParams, $location, flash, $cookieStore){
 
   var userId = $routeParams.userId;
 
   $scope.getUser = function(userId){
-    usersFactory.getUser(userId)
-    .success( function(data){
-      $scope.user = data
-    })
-    .error( function(data){
-      console.log("oh no guyzzz: " + data)
-    })
+    console.log(" I RAN")
+    console.log($cookieStore.get('current_user_id'))
+    if (userId == $cookieStore.get('current_user_id')){
+      usersFactory.getUser(userId)
+      .success( function(data){
+        $scope.user = data
+      })
+      .error( function(data){
+        console.log("oh no guyzzz: " + data)
+      })
+    }
+    else {
+      $location.path('/home')
+      flash.error = "You are not authorized to access that page."
+    }
   };
 
   $scope.createUser = function(user){
@@ -18,8 +26,8 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
       console.log(data)
       $scope.userSignUpForm.$setPristine();
       $scope.user = {};
-      $location.path('/users/'+data.id);
-      flash.success = 'Succesfully signed up';
+      $location.path('/signin');
+      flash.success = 'Succesfully signed up, please login';
     })
     .error( function(data){
       console.log("there seems to have been an error")
@@ -33,11 +41,13 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
       $location.path('/users/'+user.id)
       console.log(user)
       flash.success= "Welcome back " + user.username + "!"
+      $cookieStore.put('current_user_id',user.id);
+      console.log("COOKIES!")
+      console.log($cookieStore.get('current_user_id'))
     })
     .error( function(){
       flash.error = "Error logging in. Please double-check your info or reset password."
     })
   }
-
 
 }]);

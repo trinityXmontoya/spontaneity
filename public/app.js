@@ -1,6 +1,6 @@
 'use strict';
 
-var sponApp = angular.module('sponApp', ['ngRoute', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
+var sponApp = angular.module('sponApp', ['ngRoute', 'ngCookies', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
 
 // ROUTES
 
@@ -19,6 +19,10 @@ sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function
     .when('/login',{
       controller: 'UserCtrl',
       templateUrl: 'app/views/login.html'
+    })
+    .when('/logout',{
+      controller: 'LogoutCtrl',
+      templateUrl: ' '
     })
     .when('/users/:userId',{
       controller: 'UserCtrl',

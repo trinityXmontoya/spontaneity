@@ -13,6 +13,11 @@ sponApp.factory('usersFactory', ['$http', function($http){
     return $http.post('/users/verify', {"user": userInfo})
   };
 
+  factory.logout = function(userId){
+    console.log('i ran!')
+    return $http.get('/user_logout', {"user": {"id": userId}})
+  }
+
   return factory;
 
 }])

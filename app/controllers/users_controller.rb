@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   def verify_credentials
     user = User.find_by_username(user_params["username"])
     if user && user.authenticate(user_params["password"])
+      session[:user_id] = user.id
+      puts user
+      puts session[:user_id]
       render json: user
     else
       render json: self.status = 401

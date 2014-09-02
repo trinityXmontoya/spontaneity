@@ -1,10 +1,6 @@
-sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', function($scope, usersFactory, $routeParams){
+sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', function($scope, usersFactory, $routeParams, $location, flash){
 
   var userId = $routeParams.userId;
-
-  var init = function(){
-    $scope.getUser(userId);
-  }
 
   $scope.getUser = function(userId){
     usersFactory.getUser(userId)
@@ -16,7 +12,20 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', functio
     })
   }
 
-  init();
+  $scope.createUser = function(user){
+    usersFactory.createUser(user)
+    .success( function(data){
+      console.log(data)
+      $scope.userSignUpForm.$setPristine();
+      $scope.user = {};
+      $location.path('/users/'+data.id);
+      flash.success = 'Do it live!';
+    })
+    .error( function(data){
+      console.log("there seems to have been an error")
+      flash.error = 'Fail!';
+    })
+  }
 
 
 }]);

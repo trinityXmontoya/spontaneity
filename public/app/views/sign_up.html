@@ -31,12 +31,11 @@
     </div>
 
     <div class="col span_6_of_12 feature">
-      <form class="login_form">
-        <input class="email" name="sign_up_email" type="text" placeholder='EMAIL'>
-        <input class="username" name="sign_up_username" type="text" placeholder='USERNAME'>
-        <input class="password" name="sign_up_password" type="text" placeholder='PASSWORD'>
-        <input class="password" name="sign_up_password_confirmation" type="text" placeholder='CONFIRM PASSWORD'>
-        <div class="interests_buttons_wrapper">
+      <form class="login_form" name="userSignUpForm">
+        <input ng-model="user.email" class="email" name="sign_up_email" type="text" placeholder='EMAIL' required>
+        <input ng-model="user.username" class="username" name="sign_up_username" type="text" placeholder='USERNAME' required>
+        <input ng-model="user.password" class="password" name="sign_up_password" type="text" placeholder='PASSWORD' required>
+      <!--   <div class="interests_buttons_wrapper">
           <button class="interests" name="sports" type="text" placeholder='FOOD'>SPORTS</button>
           <button class="interests" name="music" type="text" placeholder='DRINK'>MUSIC</button>
           <button class="interests" name="art" type="text" placeholder='ACTIVITY'>ART</button>
@@ -46,8 +45,8 @@
           <button class="interests" name="dance" type="text" placeholder='FOOD'>DANCE</button>
           <button class="interests" name="meditation" type="text" placeholder='DRINK'>MEDITATION</button>
           <button class="interests" name="tours" type="text" placeholder='ACTIVITY'>TOURS</button>
-        </div>
-        <input class='sign_up_button' name="sign_up" type="submit" value="SIGN UP">
+        </div> -->
+        <input ng-click="createUser(user)" class='sign_up_button' name="sign_up" type="submit" value="SIGN UP" required>
       </form>
 
 

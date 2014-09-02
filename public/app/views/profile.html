@@ -9,7 +9,7 @@
 
 if you want to loop through the users visited destinations and do something specific it can be -->
 
-<div ng-model="user" ng-repeat="dest in user.visited_destinations">
+<div ng-init="getUser()" ng-model="user" ng-repeat="dest in user.visited_destinations">
   BAM: {{dest}}
 </div>
 <div class="welcome-block">

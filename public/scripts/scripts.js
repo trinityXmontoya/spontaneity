@@ -8,6 +8,57 @@ $(function() {
   var markers = [];
   var pos;
 
+  $(document).on("submit","form.login_form", function(){
+    console.log("working");
+    var user_adventures = 14;
+
+    if (user_adventures < 5) {
+      for (var i = 0; i < user_adventures; i++) {
+
+          $(".profile_gems").append(
+            "<div class='profile_gem_circle'> \
+              <img class='profile_gem' src='/img/gem_1_blue.svg'></img> \
+            </div>"
+          );
+
+      }
+    } else if (user_adventures >= 5 && user_adventures < 10) {
+
+          $(".profile_gems").append(
+            "<p>5</p><div class='profile_gem_circle'> \
+              <img class='profile_gem' src='/img/gem_1_cream.svg'></img> \
+            </div>"
+          );
+
+      for (var i = 0; i < user_adventures-5; i++) {
+
+          $(".profile_gems").append(
+            "<p>5</p><div class='profile_gem_circle'> \
+              <img class='profile_gem' src='/img/gem_1_blue.svg'></img> \
+            </div>"
+          );
+
+      }
+    } else if (user_adventures >= 10 && user_adventures < 15) {
+          $(".profile_gems").append(
+            "<p>10</p><div class='profile_gem_circle'> \
+              <img class='profile_gem' src='/img/gem_1_red.svg'></img> \
+            </div>"
+          );
+
+      for (var i = 0; i < user_adventures-10; i++) {
+
+          $(".profile_gems").append(
+            "<p>5</p><div class='profile_gem_circle'> \
+              <img class='profile_gem' src='/img/gem_1_blue.svg'></img> \
+            </div>"
+          );
+      }
+    }
+  });
+
+
+
   $(document).on("submit","form.location_form", function(event){
     // For testing purposes, triggering the rendering of the profile page map here
 

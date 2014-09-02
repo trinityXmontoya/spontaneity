@@ -50,4 +50,12 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
     })
   }
 
+  $scope.loggedIn = function(){
+    if ($cookieStore.get('current_user_id') != ""){ return true }
+  }
+
+  $scope.loggedOut = function(){
+    if ($cookieStore.get('current_user_id')=="7"){ return true }
+  }
+
 }]);

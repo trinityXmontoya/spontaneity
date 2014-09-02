@@ -2,14 +2,13 @@ class Adventure < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :destination
 
-  AVG_MILE_TIME = 15
+  AVG_MILE_TIME = 14
   GOOGLE_API_BASE = "https://maps.googleapis.com/maps/api/directions/json?"
   FOURSQUARE_API_BASE = "https://api.foursquare.com/v2/venues/explore?"
 
   def select_destination
     options = self.initial_filtering
-    puts options
-    # options = foursquare_search if !options
+    options = foursquare_search_and_add if !options
     # options = google_filter(options)
     self.destination_id = options.id
     self.user_id = 1
@@ -19,20 +18,24 @@ class Adventure < ActiveRecord::Base
     query = FOURSQUARE_API_BASE +
             "client_id=#{ENV['FOURSQUARE_ID']}&" +
             "client_secret=#{ENV['FOURSQUARE_SECRET']}&" +
-            "near=#{url_safe_addr}&" +
+            "ll=#{coords[0].to_s+","+coords[1].to_s}&" +
             #FourSquare API requires radius in meters
             "radius=#{max_mile_range*1600}&" +
             "section=topPicks&" +
-            "limit=3&" +
+            "limit=1&" +
             "openNow=1&" +
             "v=20140826&" +
             "m=foursquare"
   end
 
-  def foursquare_search
+  def foursquare_search_and_add
     q = foursquare_query
     res = HTTParty.get(q)["response"]["groups"][0]["items"][0]["venue"]
-    Destination.create(name: res["name"], lat: res["location"]["lat"], long:["location"]["lng"])
+    return Destination.create(
+      name: res["name"],
+      lat: res["location"]["lat"],
+      long: res["location"]["lng"]
+    )
   end
 
   def initial_filtering

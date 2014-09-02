@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.2'
 
 gem 'geocoder'
 
+gem 'rails_12factor', group: :production
+
 gem 'dotenv-rails', :groups => [:development, :test]
 
 # To use Jbuilder templates for JSON

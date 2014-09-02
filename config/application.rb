@@ -20,7 +20,7 @@ module Spontaneity
     # config.i18n.default_locale = :de
 
     # SESSION
-    config.middleware.use Rack::SessionManagement
+    # config.middleware.use Rack::SessionManagement
     config.api_only = false
   end
 end

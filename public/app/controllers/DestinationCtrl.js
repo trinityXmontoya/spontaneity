@@ -5,7 +5,7 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
     .success( function(){
       $scope.destinationForm.$setPristine();
       $scope.destination = {};
-      $location.path('/users/'+1)
+      $location.path('/profile/'+1)
       flash.success = "Thanks! We've added " + destination.name + "to our list of adventures!"
     })
     .error( function(){

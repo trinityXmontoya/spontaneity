@@ -38,7 +38,7 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
   $scope.signIn = function(userInfo){
     usersFactory.signIn(userInfo)
     .success( function(user){
-      $location.path('/users/'+user.id)
+      $location.path('/profile/'+user.id)
       console.log(user)
       flash.success= "Welcome back " + user.username + "!"
       $cookieStore.put('current_user_id',user.id);

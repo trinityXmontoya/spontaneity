@@ -38,8 +38,9 @@ class Adventure < ActiveRecord::Base
   end
 
   def initial_filtering
-    Destination.near(coords, max_mile_range).first
-    # Destination.joins(:adventures).limit(5).where('adventures.user_id != ?', user.id).near(coords(location),mile_range)
+    # select a destination the user has not already been to
+    # within the specified range
+    Destination.where('id NOT IN (SELECT destination_id FROM adventures WHERE user_id = ?)', user.id).near(coords, max_mile_range).first
   end
 
   def max_mile_range

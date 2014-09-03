@@ -1,4 +1,4 @@
-sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', '$cookieStore', function($scope, usersFactory, $routeParams, $location, flash, $cookieStore){
+sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', '$cookieStore', 'ngAnimate', function($scope, usersFactory, $routeParams, $location, flash, $cookieStore, ngAnimate){
 
   var userId = $routeParams.userId;
 
@@ -40,13 +40,13 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
     .success( function(user){
       $location.path('/users/'+user.id)
       console.log(user)
-      flash.success= "Welcome back " + user.username + "!"
+      flash('success', "Welcome Back");
       $cookieStore.put('current_user_id',user.id);
       console.log("COOKIES!")
       console.log($cookieStore.get('current_user_id'))
     })
     .error( function(){
-      flash.error = "Error logging in. Please double-check your info or reset password."
+      flash("Error logging in. Please double-check your info or reset password.");
     })
   }
 

@@ -6,7 +6,6 @@ sponApp.controller('LogoutCtrl', ['usersFactory','$location', 'flash', '$cookieS
     .success( function(){
       $location.path('/home')
       console.log($cookieStore.get('current_user_id'))
-      flash.success="Succesfully logged out"
     })
     .error( function(data){
       console.log(data)

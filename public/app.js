@@ -1,9 +1,9 @@
 'use strict';
 
-var sponApp = angular.module('sponApp', ['ngRoute', 'ngCookies', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
+var sponApp = angular.module('sponApp', ['ngRoute', 'ngCookies', 'ngAnimate', 'google-maps', 'flash']);
 
 // ROUTES
-sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function ($routeProvider, $locationProvider, flashProvider){
+sponApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
   // HashBang Hacky Fix
   $routeProvider
     .when('/', {

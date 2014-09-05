@@ -1,12 +1,45 @@
-<h1>SUBMIT DESTINATION</h1>
+<!-- Submit Destination Page -->
+<div class="welcome-block">
+  <h2 class="sign_up_title">SUBMIT A DESTINATION</h2>
+  <div class="section group">
+    <div class='col span_3_of_12'>
+      <div class="back_button">
+        <i class="fa fa-chevron-left">
+        </i>
+      </div>
+    </div>
+    <div class="col span_6_of_12 feature">
+      <div class="sign_up_profile_picture_wrapper">
+        <div class="profile_picture_wrapper">
+          <div class="profile_picture">
+            <img class="sightseer_avatar" src="/img/avatar.svg"></img>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col span_3_of_12'>
+    </div>
+  </div>
+</div>
 
-<div>
-  <form novalidate class="simple-form" name="destinationForm">
-    Name: <input type="text" ng-model="destination.name" /><br>
-    Address: <input type="text" ng-model="destination.address" /><br>
-    <button ng-click="submitDestination(destination)">SAVE</button>
-  </form>
+<div class="welcome-block">
+  <div class="section group">
+
+    <div class='col span_3_of_12'>
+    </div>
+
+    <div class="col span_6_of_12 feature">
+      <form novalidate class="simple-form login_form" name="destinationForm">
+        <input type="text" ng-model="destination.name" class="destination_name" placeholder='NAME' required/><br>
+        <input type="text" ng-model="destination.address" placeholder='ADDRESS' class="destination_address" required/><br>
+        <input type="submit" ng-click="submitDestination(destination)" class='sign_up_button' placeholder='SAVE'/>
+      </form>
   <pre>form = {{destination | json}}</pre>
 
   {{destinationConfirmedMessage}}
 </div>
+
+
+    <div class='col span_3_of_12'>
+    </div>
+  </div>

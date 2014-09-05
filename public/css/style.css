@@ -389,6 +389,8 @@ input {
 
 /*Change placeholder values*/
 .email::-webkit-input-placeholder,
+input.destination_name::-webkit-input-placeholder,
+input.destination_address::-webkit-input-placeholder,
 .username::-webkit-input-placeholder,
 .password::-webkit-input-placeholder,
 input.location::-webkit-input-placeholder
@@ -397,6 +399,8 @@ input.location::-webkit-input-placeholder
 }
 
 .email:-moz-placeholder,
+input.destination_name:-moz-placeholder,
+input.destination_address:-moz-placeholder,
 .username:-moz-placeholder,
 .password:-moz-placeholder,
 input.location:-moz-placeholder
@@ -405,6 +409,8 @@ input.location:-moz-placeholder
 }
 
 .email::-moz-placeholder,
+input.destination_name::-moz-placeholder,
+input.destination_address::-moz-placeholder,
 .username::-moz-placeholder,
 .password::-moz-placeholder,
 input.location::-moz-placeholder
@@ -413,6 +419,8 @@ input.location::-moz-placeholder
 }
 
 .email:-ms-input-placeholder,
+input.destination_name:-ms-input-placeholder,
+input.destination_address:-ms-input-placeholder,
 .username:-ms-input-placeholder,
 .password:-ms-input-placeholder,
 input.location:-ms-input-placeholder
@@ -420,7 +428,7 @@ input.location:-ms-input-placeholder
   color: #69D1EE;
 }
 
-.email, .username, .password, input.location, button.location {
+.email, .username, .password, input.location, button.location, input.destination_address, input.destination_name {
   margin: 1em auto 0 auto;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;

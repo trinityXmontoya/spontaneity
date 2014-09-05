@@ -549,7 +549,6 @@ label.adventure, label.current_location {
 
 .adventure {
   font-family: 'Josefin Slab', serif;
-  font-weight: 700;
   letter-spacing: .02em;
   background: #68CFED;
   color: #F9FFE6;
@@ -908,6 +907,16 @@ img.profile_gem {
 .cream {
   background-color: #69D1EE;
 }
+
+input[type="radio"], input[type="checkbox"] {
+    display:none;
+}
+
+label {
+    cursor: pointer;
+    line-height:32px;
+}
+
 /*RIBBON / BANNER */
 
 .ribbon {

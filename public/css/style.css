@@ -654,19 +654,39 @@ label {
 }
 
 .profile_picture {
+  background-color: #74CFF1;
+  color: #F9FFE6;
+  margin: 2px auto 0 auto;
+  border: 3px solid #F9FFE6;
+  display: inline-block;
+  width: 78px;
+  height: 100px;
+  text-align: center;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.profile_picture_wrapper {
   background-color: #E91C30;
   color: #F9FFE6;
   margin: 0 auto;
   border: 5px solid #F9FFE6;
   display: inline-block;
-  width: 75px;
-  height: 75px;
+  width: 90px;
+  height: 110px;
   text-align: center;
-  -webkit-border-radius: 75px;
-  -moz-border-radius: 75px;
-  -ms-border-radius: 75px;
-  -o-border-radius: 75px;
-  border-radius: 75px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.sightseer_avatar {
+  margin: 1.25em auto 0.75em auto;
 }
 
 .map_display_canvas, .profile_map_canvas {

@@ -27,10 +27,9 @@
       <form class="location_form">
         <h3 class="location_text where"><i class="fa fa-map-marker"></i>where are you?</h3>
 
-        <button class="current_location" ng-click="getCoords()"><i class="fa fa-crosshairs"></i>CURRENT</button>
         <input type="checkbox" value="current_location" name="current_location" id="current_location"/>
         <label for="current_location"
-          <span class="current_location">
+          <span class="current_location" ng-click="getCoords()">
             <i class="fa fa-crosshairs">
             </i>CURRENT
           </span>

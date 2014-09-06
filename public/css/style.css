@@ -469,6 +469,10 @@ button.profile_wander, button.profile_upload_button {
   width: 100%;
 }
 
+input.location.time {
+  width: 40px;
+}
+
 .intro_title {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
@@ -505,6 +509,12 @@ button.profile_wander, button.profile_upload_button {
 
 .time_text {
   margin-top: 2em;
+}
+
+.minutes {
+  line-height: .5em;
+  margin: 1em 0 1em .25em;
+  display: inline-block;
 }
 
 .signup_link {

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get '/user_logout' => 'users#logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+ get "/*path" => redirect("/?goto=%{path}")
 
 end

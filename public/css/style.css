@@ -437,7 +437,7 @@ input.location:-ms-input-placeholder
   border-radius: 0.25em;
 }
 
-input[type=submit], button.previous, button.next, button.matrix, button.profile_wander, button.profile_upload_button {
+input[type=submit], button.previous, button.next, button.matrix, button.profile_wander, button.profile_upload_button, button.home_sign_in, button.about {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   margin: 10px 0;
@@ -465,6 +465,26 @@ button.next {
   border-left: 1.5px solid #F9FFE6;
 }
 
+.home_buttons_wrapper {
+  margin: 0 auto;
+  width:100%;
+  max-width: 300px;
+}
+
+button.home_sign_in {
+  float: left;
+  width:50%;
+  border-right: 1.5px solid #F9FFE6;
+  /*max-width: 150px;*/
+}
+
+button.about {
+  float: right;
+  width:50%;
+  border-left: 1.5px solid #F9FFE6;
+  /*max-width: 150px;*/
+}
+
 button.profile_wander, button.profile_upload_button {
   width: 100%;
 }
@@ -482,7 +502,7 @@ input.location.time {
 }
 
 .sightseer_logo {
-  margin: 1em auto;
+  margin: 0.5em auto 1.75em auto;
 }
 
 .welcome_text {
@@ -1086,9 +1106,14 @@ transform:skew(-30deg,0deg);}
 
 }
 
+.shadow {
+  fill: RGBA(233, 28, 48, 1);
+}
+
 /*Floating*/
 
 .floating{
+    margin: 0 auto;
     /*float: left;*/
     -webkit-animation-name: Floatingx;
     -webkit-animation-duration: 4s;
@@ -1105,25 +1130,26 @@ transform:skew(-30deg,0deg);}
 
 @-webkit-keyframes Floatingx{
     from {-webkit-transform:translate(0, 0px);}
-    65% {-webkit-transform:translate(0, 15px);}
+    65% {-webkit-transform:translate(0, 10px);}
     to {-webkit-transform: translate(0, -0px);    }
 }
 
 @-moz-keyframes Floating{
     from {-moz-transform:translate(0, 0px);}
-    65% {-moz-transform:translate(0, 15px);}
+    65% {-moz-transform:translate(0, 10px);}
     to {-moz-transform: translate(0, -0px);}
 }
 
 
 .scaling{
-    float: left;
+    margin: 0 auto;
+    /*float: left;*/
     -webkit-animation-name: scalex;
-    -webkit-animation-duration:3s;
+    -webkit-animation-duration:4s;
     -webkit-animation-iteration-count:infinite;
     -webkit-animation-timing-function:ease-in-out;
     -moz-animation-name: scale;
-    -moz-animation-duration:3s;
+    -moz-animation-duration:4s;
     -moz-animation-iteration-count:infinite;
     -moz-animation-timing-function:ease-in-out;
 }

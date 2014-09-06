@@ -501,9 +501,24 @@ input.location.time {
 
 .home_intro {
   font-family: 'Lato', sans-serif;
-  font-weight: 400;
+  font-weight: 100;
+  font-size: 10.5pt;
   margin: .25em auto 0 auto;
   color: #F9FFE6;
+  line-height: 1.5em;
+  letter-spacing: .75px;
+}
+
+.home_intro.first {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+/*  font-family: 'Josefin Slab', serif;
+  font-weight: 100;*/
+  font-size: 30pt;
+  margin: .25em auto 0 auto;
+  color: RGBA(249, 255, 227, .3);
+  line-height: 1.5em;
+  letter-spacing: 2px;
 }
 
 .where {

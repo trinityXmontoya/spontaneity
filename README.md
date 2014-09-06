@@ -21,7 +21,7 @@ Integrating user interests into the API calls we're making to make adventures ev
 3. Run bundle
 4. Run touch .env from your terminal or create an .env file.
 5. Add .env to your .gitignore file (This app requires a .env file to store your environment variables. The dotenv-rails gem will load the variables from your .env file into the app when it is first loaded.)
-6. You will need access tokens from FourSquare and Google Maps API. You will also need to declare a variable for your port of choice, email configuration, and the rack environment Your .env file should look as follows:
+6. You will need access tokens from FourSquare and Google Maps API. Your .env file should look as follows:
 FOURSQUARE_ID = ENV['FOURSQUARE_ID']
 FOURSQUARE_SECRET = ENV['FOURSQUARE_SECRET']
 GOOGLE_API_KEY = ENV['GOOGLE_API_KEY']

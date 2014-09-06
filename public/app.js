@@ -33,6 +33,10 @@ sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function
       controller: 'UserCtrl',
       templateUrl: 'app/views/sign_up.html'
     })
+    .when('/about',{
+      controller: '',
+      templateUrl: 'app/views/about.html'
+    })
     .when('/login',{
       controller: 'UserCtrl',
       templateUrl: 'app/views/login.html'

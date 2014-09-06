@@ -477,7 +477,7 @@ input.location.time {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   letter-spacing: .05em;
-  margin: .5em auto 1em auto;
+  margin: .25em auto 1em auto;
   color: #F9FFE6;
 }
 
@@ -515,6 +515,7 @@ input.location.time {
 /*  font-family: 'Josefin Slab', serif;
   font-weight: 100;*/
   font-size: 30pt;
+  font-style: italic;
   margin: .25em auto 0 auto;
   color: RGBA(249, 255, 227, .3);
   line-height: 1.5em;
@@ -1080,6 +1081,65 @@ label {
 transform:skew(-30deg,0deg);}
 }
 
+.floating_div {
+  height: 200px;
+
+}
+
+/*Floating*/
+
+.floating{
+    /*float: left;*/
+    -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+/*    margin-left: 30px;
+    margin-top: 5px;*/
+
+}
+
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);    }
+}
+
+@-moz-keyframes Floating{
+    from {-moz-transform:translate(0, 0px);}
+    65% {-moz-transform:translate(0, 15px);}
+    to {-moz-transform: translate(0, -0px);}
+}
+
+
+.scaling{
+    float: left;
+    -webkit-animation-name: scalex;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:ease-in-out;
+    -moz-animation-name: scale;
+    -moz-animation-duration:3s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:ease-in-out;
+}
+
+    @-webkit-keyframes scalex{
+        from {-webkit-transform: scale(0.9);}
+        65% {-webkit-transform: scale(1.0);}
+        to {-webkit-transform: scale(0.9);}
+    }
+
+    @-moz-keyframes scale{
+        from {-moz-transform: scale(0.9);}
+        65% {-moz-transform: scale(1.0);}
+        to {-moz-transform: scale(0.9);}
+    }
+
 
 /*ROTATING RAYS*/
 
@@ -1113,3 +1173,5 @@ transform:skew(-30deg,0deg);}
   transform: rotate(360deg);
 }
 */
+
+

@@ -1,6 +1,6 @@
 'use strict';
 
-var sponApp = angular.module('sponApp', ['ngRoute', 'ngCookies', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
+var sponApp = angular.module('sponApp', ['ngRoute', 'google-maps', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
 
 // ROUTES
 sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function ($routeProvider, $locationProvider, flashProvider){
@@ -46,8 +46,8 @@ sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function
       template: ' '
     })
     .when('/profile',{
-      controller: 'UserCtrl',
-      templateUrl: 'app/views/profile.html'
+      controller: 'ProfileCtrl',
+      template: ' '
     })
     .when('/profile/:userId',{
       controller: 'UserCtrl',

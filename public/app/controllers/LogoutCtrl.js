@@ -1,12 +1,12 @@
-sponApp.controller('LogoutCtrl', ['usersFactory','$location', 'flash', '$cookies', function(usersFactory, $location, flash, $cookies){
+sponApp.controller('LogoutCtrl', ['$rootScope','usersFactory','$location', 'flash', function($rootScope,usersFactory, $location, flash){
 
   var logout = function(){
-    var user_id = $cookies.currentUserId;
+    var user_id = $rootScope.currentUserId;
     usersFactory.logout(user_id)
     .success( function(){
       console.log('no error')
       $location.path('/home')
-      $cookies.currentUserId = ""
+      $rootScope.currentUserId = ""
       flash.success="Succesfully logged out"
     })
     .error( function(data){

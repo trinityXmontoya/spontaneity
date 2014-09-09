@@ -41,7 +41,7 @@ class Adventure < ActiveRecord::Base
       )
       if d.save
         result = true
-      elsif counter = 7
+      elsif counter == 7
         kind = 'topPicks'
         foursquare_search_and_add
       else

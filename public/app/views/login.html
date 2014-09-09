@@ -8,10 +8,16 @@
     </div>
 
     <div class="col span_6_of_12 feature">
-      <form class="login_form" name="userSignInForm">
-        <input ng-model="user.username" class="username" name="username" type="text" placeholder='USERNAME' required>
-        <input ng-model="user.password" class="password" name="password" type="password" placeholder='PASSWORD' required>
-        <input ng-click="signIn(user)"class='sign_in_button' name="sign_in" type="submit" value="SIGN IN">
+      <form novalidate class="login_form" name="loginForm">
+
+        <input ng-model="user.username" class="username" name="username" type="text" placeholder='USERNAME' ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }" required>
+        <p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">Username required to login.</p>
+
+        <input ng-model="user.password" class="password" name="password" type="password" placeholder='PASSWORD' ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }" required>
+        <p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">Password required to login.</p>
+
+        <input ng-click="submitForm(loginForm)"class='sign_in_button' name="login" type="submit" value="SIGN IN" ng-disabled="loginForm.$invalid">
+
       </form>
       <a href="/signup" class='signup_link'><h6 class="signup_text">SIGN UP!</h6></a>
     </div>

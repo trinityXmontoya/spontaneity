@@ -1,5 +1,12 @@
 sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routeParams', '$location', 'flash', function($scope, destinationsFactory, $routeParams, $location, flash){
 
+  $scope.submitForm = function(isValid){
+    if (isValid){
+      $scope.submitDestination($scope.destination)
+      $scope.destinationForm.$setPristine();
+    }
+  };
+
   $scope.submitDestination = function(destination) {
     destinationsFactory.createDestination(destination)
     .success( function(){
@@ -21,6 +28,6 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
      }
 
     })
-  }
+  };
 
 }]);

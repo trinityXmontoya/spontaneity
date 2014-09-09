@@ -1,5 +1,5 @@
 <!-- Submit Destination Page -->
-<div class="welcome-block">
+<div class="welcome-block" ng-init="addrVerification()">
   <h2 class="sign_up_title">SUBMIT A DESTINATION</h2>
   <div class="section group">
     <div class='col span_3_of_12'>
@@ -29,17 +29,37 @@
     </div>
 
     <div class="col span_6_of_12 feature">
-      <form novalidate class="simple-form login_form" name="destinationForm">
-        <input type="text" ng-model="destination.name" class="destination_name" placeholder='NAME' required/><br>
-        <input type="text" ng-model="destination.address" placeholder='ADDRESS' class="destination_address" required/><br>
-        <input type="submit" ng-click="submitDestination(destination)" class='sign_up_button' placeholder='SAVE'/>
-      </form>
-  <pre>form = {{destination | json}}</pre>
+      <form novalidate class="simple-form" name="destinationForm">
+        <input type="text" name="name" placeholder='NAME' class="destination_name" ng-model="destination.name" ng-minlength="2" ng-class="{ 'has-error' : destinationForm.name.$invalid && !destinationForm.name.$pristine }" required /><br>
+        <p ng-show="destinationForm.name.$error.required && !destinationForm.name.$pristine" class="help-block">A name is required for this destination.</p>
+        <p ng-show="destinationForm.name.$error.minlength" class="help-block">The destination name is too short.</p>
 
-  {{destinationConfirmedMessage}}
+        <input id="destination_address" type="text" name="address" placeholder='ADDRESS' class="destination_address" ng-model="destination.address" ng-class="{ 'has-error' : destinationForm.address.$invalid && !destinationForm.address.$pristine }"/ required ><br>
+        <p ng-show="destinationForm.address.$error.required && !destinationForm.address.$pristine" class="help-block">An address is required for this destination</p>
+
+        <input type="submit" ng-click="submitForm(destinationForm.$valid)" class='sign_up_button' placeholder='SAVE' ng-disabled="destinationForm.$invalid" />
+      </form>
 </div>
 
 
     <div class='col span_3_of_12'>
     </div>
   </div>
+
+<script>
+// css documentation
+// http://smartystreets.com/kb/liveaddress-api/plugin/advanced
+  $(document).ready( function(){
+    // LiveAddress.init("982004215141362080")
+    var liveaddress = $.LiveAddress({
+      key: "982004215141362080",
+      debug: true,
+      autoVerify: true,
+      invalidMessage: "Address not valid",
+      fieldSelector: "input[name=address]",
+      // ui: false
+    })
+    $('.smarty-tag').remove()
+    $('#destination_address').css('background','#F9FFE6')[0].placeholder="ADDRESS"
+  })
+</script>

@@ -8,8 +8,18 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
       $location.path('/profile/'+1)
       flash.success = "Thanks! We've added " + destination.name + "to our list of adventures!"
     })
-    .error( function(){
-      console.log("OH NO")
+    .error( function(data){
+      console.log(data)
+     if (data.lat){
+      flash.error = "Sorry! This destination already exists"
+     }
+     else if (data.name){
+      flash.error = "You must provide a name for the destination."
+     }
+     else {
+      flash.error = "You must provide an address."
+     }
+
     })
   }
 

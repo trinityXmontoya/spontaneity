@@ -26,14 +26,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def current_user
-  #   if current_user
-  #     render json: current_user
-  #   else
-  #     render json: self.status = 404
-  #   end
-  # end
-
   def logout
     user = User.find(params["user_id"])
     if current_user == user

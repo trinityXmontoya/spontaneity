@@ -1,6 +1,6 @@
 class Destination < ActiveRecord::Base
   has_many :adventures
-  validates :name, :lat, :long, presence: true
+  validates :name, :lat, :long, :kind, presence: true
   geocoded_by :address, :latitude  => :lat, :longitude => :long
   validates :lat, :uniqueness => { :scope => :long }
 

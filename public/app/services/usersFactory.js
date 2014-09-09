@@ -10,12 +10,16 @@ sponApp.factory('usersFactory', ['$http', function($http){
   };
 
   factory.signIn = function(userInfo){
-    return $http.post('/users/verify', {"user": userInfo})
+    return $http.post('/users/signIn', {"user": userInfo})
   };
 
   factory.logout = function(userId){
-    return $http.delete('/user_logout/'+userId)
+    return $http.delete('/logout/'+userId)
   };
+
+  factory.validateUniqueness = function(type,input){
+    return $http.get('/validate_sign_up_uniqueness'+'?type='+type+'&input='+input)
+  }
 
   return factory;
 

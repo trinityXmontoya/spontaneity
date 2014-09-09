@@ -5,6 +5,13 @@ class UsersController < ApplicationController
     render json: user, :include => {:visited_destinations => {only: [:name,:lat,:long]}}
   end
 
+  def validate
+    type = params["type"]
+    input = params["input"]
+    res = User.validate_uniqueness(type,input)
+    render json: res
+  end
+
   def create
     user = User.new(user_params)
     if user.save
@@ -14,12 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def verify_credentials
+  def sign_in
     user = User.find_by_username(user_params["username"])
     if user && user.authenticate(user_params["password"])
       session[:user_id] = user.id
-      puts "THE SESSION"
-      puts session[:user_id]
       render json: user
     else
       render json: self.status = 401

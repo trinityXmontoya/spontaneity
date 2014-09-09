@@ -30,10 +30,17 @@
     </div>
 
     <div class="col span_6_of_12 feature">
-      <form class="login_form" name="userSignUpForm">
-        <input ng-model="user.email" class="email" name="sign_up_email" type="text" placeholder='EMAIL' required/>
-        <input ng-model="user.username" class="username" name="sign_up_username" type="text" placeholder='USERNAME' required/>
-        <input ng-model="user.password" class="password" name="sign_up_password" type="text" placeholder='PASSWORD' required/>
+      <form novalidate class="login_form" name="loginForm">
+        <input ng-model="user.email" class="email" name="email" type="email" placeholder='EMAIL' ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }" required unique-sign-up/>
+        <p ng-show="loginForm.email.$error.required && !loginForm.email.$pristine" class="help-block">Valid email required.</p>
+        <p ng-show="loginForm.email.$error.unique && !loginForm.email.$pristine" class="help-block">We're sorry, that email is already taken, try another!</p>
+
+        <input ng-model="user.username" class="username" name="username" type="text" placeholder='USERNAME' ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }" required unique-sign-up/>
+        <p ng-show="loginForm.username.$error.required && !loginForm.username.$pristine" class="help-block">Username required.</p>
+        <p ng-show="loginForm.username.$error.unique && !loginForm.username.$pristine" class="help-block">We're sorry, that username is already taken, try another!</p>
+
+        <input ng-model="user.password" class="password" name="password" type="password" placeholder='PASSWORD' ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }" required/>
+        <p ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">Password required.</p>
       <!--   <div class="interests_buttons_wrapper">
           <button class="interests" name="sports" type="text" placeholder='FOOD'>SPORTS</button>
           <button class="interests" name="music" type="text" placeholder='DRINK'>MUSIC</button>
@@ -45,7 +52,7 @@
           <button class="interests" name="meditation" type="text" placeholder='DRINK'>MEDITATION</button>
           <button class="interests" name="tours" type="text" placeholder='ACTIVITY'>TOURS</button>
         </div> -->
-        <input ng-click="createUser(user)" class='sign_up_button' name="sign_up" type="submit" value="SIGN UP" required/>
+        <input ng-click="submitForm(loginForm.$valid)" class='sign_up_button' name="sign_up" type="submit" value="SIGN UP" ng-disabled="loginForm.$invalid" required/>
       </form>
 
 

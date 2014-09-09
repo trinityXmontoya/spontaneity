@@ -20,11 +20,17 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
     }
   };
 
+  $scope.submitForm = function(isValid){
+    if (isValid){
+      $scope.createUser($scope.user)
+    }
+  };
+
   $scope.createUser = function(user){
     usersFactory.createUser(user)
     .success( function(data){
       console.log(data)
-      $scope.userSignUpForm.$setPristine();
+      $scope.loginForm.$setPristine();
       $scope.user = {};
       $location.path('/signin');
       flash.success = 'Succesfully signed up, please login';
@@ -53,6 +59,15 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
 
   $scope.loggedIn = function(){
     if ($cookies.currentUserId !== ""){ return true }
+  }
+
+  $scope.validate = function(input){
+    if ( $(input.target).hasClass("email")){
+      usersFactory.validate("email",input)
+    }
+    else if ( $(input.target).hasClass("username")){
+      usersFactory.validate("username",input)
+    }
   }
 
 }]);

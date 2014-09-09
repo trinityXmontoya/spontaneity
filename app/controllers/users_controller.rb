@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     if user && user.authenticate(user_params["password"])
       session[:user_id] = user.id
       puts "THE SESSION"
-      puts session
       puts session[:user_id]
       render json: user
     else
@@ -27,19 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def current_user
-    if current_user
-      render json: current_user
-    else
-      render json: self.status = 404
-    end
-  end
+  # def current_user
+  #   if current_user
+  #     render json: current_user
+  #   else
+  #     render json: self.status = 404
+  #   end
+  # end
 
   def logout
-    user = User.find(user_params["id"])
-    puts user
-    if user == current_user
-      session[:user_id] == nil
+    user = User.find(params["user_id"])
+    if current_user == user
+      session[:user_id] = nil
       render json: self.status = 200
     else
       render json: self.status = 401
@@ -62,7 +60,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:interests, :email, :username, :password)
+    params.require(:user).permit(:interests, :email, :username, :password, :id)
   end
 
 end

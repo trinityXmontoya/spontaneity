@@ -43,7 +43,7 @@ sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function
     })
     .when('/logout',{
       controller: 'LogoutCtrl',
-      templateUrl: ' '
+      template: ' '
     })
     .when('/profile',{
       controller: 'UserCtrl',

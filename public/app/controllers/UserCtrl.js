@@ -1,11 +1,11 @@
-sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', '$cookieStore', function($scope, usersFactory, $routeParams, $location, flash, $cookieStore){
+sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$location', 'flash', '$cookies', function($scope, usersFactory, $routeParams, $location, flash, $cookies){
 
   var userId = $routeParams.userId;
 
   $scope.getUser = function(userId){
     console.log(" I RAN")
-    console.log($cookieStore.get('current_user_id'))
-    if (userId == $cookieStore.get('current_user_id')){
+    console.log($cookies.currentUserId)
+    if (userId == $cookies.currentUserId){
       usersFactory.getUser(userId)
       .success( function(data){
         $scope.user = data
@@ -42,9 +42,9 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
       console.log(user)
       flash.success= "Welcome back " + user.username + "!"
       $(".name").html('<h3>'+ user.username + '</h3>')
-      $cookieStore.put('current_user_id',user.id);
+      $cookies.currentUserId =user.id;
       console.log("COOKIES!")
-      console.log($cookieStore.get('current_user_id'))
+      console.log($cookies.currentUserId)
     })
     .error( function(){
       flash.error = "Error logging in. Please double-check your info or reset password."
@@ -52,11 +52,7 @@ sponApp.controller('UserCtrl', ['$scope','usersFactory', '$routeParams', '$locat
   }
 
   $scope.loggedIn = function(){
-    if ($cookieStore.get('current_user_id') != ""){ return true }
-  }
-
-  $scope.loggedOut = function(){
-    if ($cookieStore.get('current_user_id')=="7"){ return true }
+    if ($cookies.currentUserId !== ""){ return true }
   }
 
 }]);

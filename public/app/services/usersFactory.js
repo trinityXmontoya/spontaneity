@@ -14,9 +14,8 @@ sponApp.factory('usersFactory', ['$http', function($http){
   };
 
   factory.logout = function(userId){
-    console.log('i ran!')
-    return $http.get('/user_logout', {"user": {"id": userId}})
-  }
+    return $http.delete('/user_logout/'+userId)
+  };
 
   return factory;
 

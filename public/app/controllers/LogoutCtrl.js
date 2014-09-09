@@ -1,16 +1,18 @@
-sponApp.controller('LogoutCtrl', ['usersFactory','$location', 'flash', '$cookieStore', function($location, flash, $cookieStore, usersFactory){
+sponApp.controller('LogoutCtrl', ['usersFactory','$location', 'flash', '$cookies', function(usersFactory, $location, flash, $cookies){
 
   var logout = function(){
-    var current_user = $cookieStore.get('current_user_id');
-    usersFactory.logout(current_user)
+    var user_id = $cookies.currentUserId;
+    usersFactory.logout(user_id)
     .success( function(){
+      console.log('no error')
       $location.path('/home')
-      console.log($cookieStore.get('current_user_id'))
+      $cookies.currentUserId = ""
       flash.success="Succesfully logged out"
     })
     .error( function(data){
-      console.log(data)
       console.log("ERROR")
+      $location.path('/home')
+      flash.error="You are not authorized to perform that action"
     })
   };
 

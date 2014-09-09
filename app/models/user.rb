@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   def downcase_email_and_username
     self.email.downcase
-    self.email.username
+    self.username.downcase
   end
 
   def self.validate_uniqueness(type,input)

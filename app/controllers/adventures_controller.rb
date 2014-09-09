@@ -2,7 +2,6 @@ class AdventuresController < ApplicationController
 
   def show
     adventure = Adventure.where(user_id: params[:id])
-
     render json: adventure
   end
 
@@ -36,6 +35,6 @@ class AdventuresController < ApplicationController
 
   private
   def adventure_params
-    params.require(:adventure).permit(:user_id,:destination_id,:status,:start_location, :time_limit)
+    params.require(:adventure).permit(:user_id,:destination_id,:status,:start_location, :time_limit, :kind)
   end
 end

@@ -1,11 +1,3 @@
-/*GOOGLE MAP*/
-
-.angular-google-map-container {
-  height: 200px;
-}
-
-
-
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400,700);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:100,400,700);
 /*  SECTIONS  ============================================================================= */
@@ -1252,3 +1244,16 @@ label {
         -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
     }
 */
+
+/*GOOGLE MAP*/
+.angular-google-map-container {
+  height: 200px;
+}
+
+/*REMOVE HTML5 INPUT[TYPE='NUMBER'] ARROWS*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

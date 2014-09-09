@@ -1,4 +1,4 @@
-<div class="welcome-block">
+<div class="welcome-block" ng-init="locationAddrVerification()">
   <div class="section group">
     <div class='col span_3_of_12'>
       <div class="back_button">
@@ -24,10 +24,11 @@
     </div>
 
     <div class="col span_6_of_12 feature">
-      <form class="location_form">
+      <form novalidate class="adventure_form" name="newAdventureForm">
+
+        <!-- LOCATION -->
         <h3 class="location_text where"><i class="fa fa-map-marker"></i>where are you?</h3>
 
-        <input type="checkbox" value="current_location" name="current_location" id="current_location"/>
         <label for="current_location"
           <span class="current_location" ng-click="getCoords()">
             <i class="fa fa-crosshairs">
@@ -35,42 +36,51 @@
           </span>
         </label>
         <br>
-        <input ng-model="adventure.start_location" class="location" name="location" type="text" placeholder='ENTER LOCATION'/>
+        <input ng-model="adventure.start_location" class="location" name="location" type="text" placeholder='ENTER LOCATION' ng-class="{ 'has-error': newAdventureForm.start_location.$invalid && !newAdventureForm.start_location.$pristine}" required/>
+        <p ng-show="newAdventureForm.start_location.$error.required && !newAdventureForm.start_location.$error.$pristine">Location Required</p>
+
+      <!-- ADVENTURE TYPE -->
        <h3 class="location_text adventure_type">
-          <i class="fa fa-star-o">
-          </i>adventure type?
+          <i class="fa fa-star-o"></i>adventure type?
         </h3>
-          <input type="radio" id="adventure_food" value="food" name="adventure"/>
-            <label for="adventure_food"
-            <span class="adventure">
-              <i class="fa fa-spoon">
-              </i>FOOD
-            </span>
-            </label>
-              <input type="radio" id="adventure_drink" value="drink" name="adventure"/>
-              <label for="adventure_drink"
-              <span class="adventure">
-                <i class="fa fa-glass">
-                </i>DRINK
-              </span>
-            </label>
-          <input type="radio" id="adventure_event" value="event" name="adventure"/>
-          <label for="adventure_event"
-            <span class="adventure">
-              <i class="fa fa-rocket">
-              </i>EVENT
-            </span>
-          </label>
+
+        <input ng-model="adventure.kind" type="radio" id="adventure_food" value="food" name="adventure" required/>
+        <label for="adventure_food">
+          <span class="adventure">
+            <i class="fa fa-spoon"></i>FOOD
+          </span>
+        </label>
+        <input ng-model="adventure.kind" type="radio" id="adventure_drink" value="drinks" name="adventure" required/>
+        <label for="adventure_drink">
+          <span class="adventure">
+            <i class="fa fa-glass"></i>DRINK
+          </span>
+        </label>
+        <input ng-model="adventure.kind" type="radio" id="adventure_event" value="sights" name="adventure" required/>
+        <label for="adventure_event">
+          <span class="adventure">
+            <i class="fa fa-rocket"></i>EXPERIENCE
+          </span>
+        </label>
+
+       <!--  TIME LIMIT -->
         <h3 class="location_text time_text"><i class="fa fa-clock-o"></i>length of time?</h3>
-        <input ng-model="adventure.time_limit" class="location time" name="time" type="number" placeholder=':00'/><h3 class="location_text time_text minutes">minutes</h3><br/>
-        <input ng-click="submitAdventure(adventure)" class='location_button' name="submit" type="submit" value="GO"/>
+
+        <input ng-model="adventure.time_limit" class="location time" name="time_limit" type="number" min="15" placeholder=':00' ng-class="{ 'has-error': newAdventureForm.time_limit.$invalid && !newAdventureForm.time_limit.$pristine}" required/>
+        <h3 class="location_text time_text minutes">minutes</h3>
+        <br/>
+        <p ng-show="newAdventureForm.time_limit.$error.required && !newAdventureForm.time_limit.$pristine">Time limit required!</p>
+        <p ng-show="newAdventureForm.time_limit.$error.min && !newAdventureForm.time_limit.$pristine">Each adventure requires at least 15 minutes.</p>
+        <p ng-show="newAdventureForm.time_limit.$error.number && !newAdventureForm.time_limit.$pristine">Valid number required.</p>
+
+        <!-- SUBMIT -->
+        <input ng-click="submitForm(newAdventureForm)" class='location_button' name="submit" type="submit" value="GO" ng-disabled="newAdventureForm.$invalid"/>
       </form>
     </div>
 
     <div class='col span_3_of_12'>
     </div>
   </div>
-
 </div>
 
-adventure {{ adventure | json}}
+{{ adventure || json}}

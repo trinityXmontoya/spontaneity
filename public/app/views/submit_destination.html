@@ -46,20 +46,3 @@
     </div>
   </div>
 
-<script>
-// css documentation
-// http://smartystreets.com/kb/liveaddress-api/plugin/advanced
-  $(document).ready( function(){
-    // LiveAddress.init("982004215141362080")
-    var liveaddress = $.LiveAddress({
-      key: "982004215141362080",
-      debug: true,
-      autoVerify: true,
-      invalidMessage: "Address not valid",
-      fieldSelector: "input[name=address]",
-      // ui: false
-    })
-    $('.smarty-tag').remove()
-    $('#destination_address').css('background','#F9FFE6')[0].placeholder="ADDRESS"
-  })
-</script>

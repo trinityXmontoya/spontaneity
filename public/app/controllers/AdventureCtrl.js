@@ -2,6 +2,25 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
 
   $scope.directions = Directions;
 
+  $scope.locationAddrVerification =  function(){
+    $('form[name=newAdventureForm]').LiveAddress({
+      key: "982004215141362080",
+      debug: true,
+      invalidMessage: "Address not valid",
+      addresses: [{
+        street: 'input[name=location]'
+      }]
+    });
+    $('.smarty-tag').remove();
+    $('input[name=location]').css('background','#F9FFE6')[0].placeholder="LOCATION"
+  };
+
+  $scope.submitForm = function(form){
+    if (form.$valid){
+      $scope.submitAdventure($scope.adventure);
+    }
+  };
+
   $scope.submitAdventure = function(adventure){
     adventuresFactory.createAdventure(adventure)
     .success( function(data){
@@ -17,12 +36,12 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
 
   $scope.getCoords = function(){
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("current position", position);
-
-      // Get coordinates for current position
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
-      var start = lat+","+lng;
+      var start = lat + ", " + lng;
+      var loc_input = $('input[name=location]')
+      loc_input.val(start);
+      loc_input.trigger('input');
     })
   };
 
@@ -102,10 +121,5 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
       $scope.counter ++;
     }
   }
-
-  // $scope.currentCenter = {
-  //       latitude: $scope.directions.steps[this.counter]["start_location"]["lat"],
-  //       longitude: $scope.directions.steps[this.counter]["start_location"]["lng"]
-  // }
 
 }])

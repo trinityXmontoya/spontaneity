@@ -604,6 +604,43 @@ label.adventure, label.current_location {
   text-align: center;
 }
 
+.logout_container {
+  border: 2px solid #F9FFE3;
+  padding: .1em;
+  outline: none;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.logout_button {
+  float: left;
+  margin-bottom: 100px;
+}
+
+.logout {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: .02em;
+  color: #F9FFE6;
+  font-weight: 400;
+  line-height: .5em;
+  display: inline;
+  margin: 0 auto;
+  width: 30%;
+  height: 2em;
+  padding: 0 0.5em;
+  text-align: center;
+}
+
+.logout.btm {
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+}
+
 .adventure {
   font-family: 'Josefin Slab', serif;
   letter-spacing: .02em;

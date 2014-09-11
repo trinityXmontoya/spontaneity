@@ -461,7 +461,7 @@ button.next {
   border-left: 1.5px solid #F9FFE6;
 }
 
-.home_buttons_wrapper {
+.home_buttons_wrapper, .home_intro_text {
   margin: 0 auto;
   width:100%;
   max-width: 300px;

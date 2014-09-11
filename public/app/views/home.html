@@ -20,8 +20,13 @@
         <h3 class="home_intro">
           Meet your guide to the unknown & wondrous.
         </h3>
-      <div class="home_buttons_wrapper">
-        <a href="/login"><button class="home_sign_in">SIGN IN</button></a>
+      <div class="home_buttons_wrapper" ng-controller='UserCtrl'>
+        <span ng-show="!loggedIn()">
+          <a href="/login"><button class="home_sign_in">SIGN IN</button></a>
+        </span>
+        <span ng-show="loggedIn()">
+          <a href="/profile"><button class="home_sign_in">PROFILE</button></a>
+        </span>
         <a href="/about"><button class="about">ABOUT</button></a>
       </div>
       </div>

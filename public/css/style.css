@@ -1114,6 +1114,13 @@ label {
   margin: 0 auto;
 }
 
+p.help-block {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin: .25em auto 0 auto;
+  color: RGBA(233, 28, 48, .8);
+}
+
 /*CSS GEM*/
 #diamond {
   position:absolute;

@@ -1,4 +1,4 @@
-sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adventuresFactory', 'Directions', 'googleMaps', function($scope, $routeParams, $location, adventuresFactory, Directions, googleMaps){
+sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adventuresFactory', 'Directions', 'googleMaps', 'flash', function($scope, $routeParams, $location, adventuresFactory, Directions, googleMaps, flash){
 
   $scope.directions = Directions;
 
@@ -30,8 +30,8 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
       $scope.directions.name = data.destination
     })
     .error( function(){
-      console.log("ERROR: " + "e")
       $location.path('/new_adventure')
+      flash.error = "Error beginning your adventure, please try again!"
     })
   };
 
@@ -64,14 +64,12 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
         zoomControl: false,
         mapTypeControl: false,
         panControl: false,
-        backgroundColor: "purple",
         streetViewControl: false
   };
 
   $scope.counter = 0;
 
   $scope.completeAdventure = function(){
-    console.log("ADVENTURE_ID", $scope.directions.adventure_id)
     var adventure_id = $scope.directions.adventure_id
     adventuresFactory.completeAdventure(adventure_id)
     .success(function(){

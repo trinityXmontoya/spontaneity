@@ -10,7 +10,6 @@ sponApp.factory("googleMaps", function(){
 
 //     init: function(directions){
 //       directionsList = directions.steps
-//       console.log("directions list", directionsList);
 //       this.displayDirection();
 //       this.displayMap(this.lat, this.lng, directionsList[this.counter].start_point, directionsList[this.counter].end_point);
 //     },
@@ -62,7 +61,6 @@ sponApp.factory("googleMaps", function(){
 
 //     displayMap: function(lat, lng, start, end) {
 //       var latlng = new google.maps.LatLng(lat, lng);
-//       console.log("latlng", latlng);
 //       var mapOptions = {
 //         zoom: 16,
 //         styles: this.mapStyles,

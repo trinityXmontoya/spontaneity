@@ -17,7 +17,6 @@ sponApp.controller('DestinationCtrl', ['$scope', '$rootScope','destinationsFacto
       flash.success = "Thanks! We've added " + destination.name + " to our list of adventures!"
     })
     .error( function(data){
-      console.log(data)
        if (data.lat){
         flash.error = "Sorry! This destination already exists"
        }

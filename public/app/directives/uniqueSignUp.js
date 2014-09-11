@@ -13,12 +13,11 @@ sponApp.directive('uniqueSignUp', ["usersFactory", function(usersFactory){
         .success(function(res){
           if (input == el.val()){
             res = JSON.parse(res)
-            console.log(res)
             ngModel.$setValidity('unique',res);
           }
         })
         .error(function(data){
-          console.log("oh boy");
+          console.log("error verifying uniqueness of attribute");
         });
       });
     }

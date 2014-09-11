@@ -1343,3 +1343,20 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+/*SMARTY UI*/
+.smarty-tag {
+  display: none
+}
+
+.smarty-autocomplete {
+  background: #F9FFE6;
+  border: none;
+  border-radius: 0.25em;
+}
+
+.smarty-suggestion, .smarty-no-suggestions {
+  color: #68CFED;
+  font-family: 'Josefin Slab', serif;
+  padding: 3px 5px;
+}

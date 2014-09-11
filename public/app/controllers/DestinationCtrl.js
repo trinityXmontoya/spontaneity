@@ -1,4 +1,4 @@
-sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routeParams', '$location', 'flash', function($scope, destinationsFactory, $routeParams, $location, flash){
+sponApp.controller('DestinationCtrl', ['$scope', '$rootScope','destinationsFactory','$routeParams', '$location', 'flash', function($scope, $rootScope, destinationsFactory, $routeParams, $location, flash){
 
   $scope.submitForm = function(isValid){
     if (isValid){
@@ -7,6 +7,9 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
   };
 
   $scope.submitDestination = function(destination) {
+    console.log($rootScope.currentUserId)
+    destination.user_id = $rootScope.currentUserId
+    console.log(destination)
     destinationsFactory.createDestination(destination)
     .success( function(){
       $scope.destinationForm.$setPristine();
@@ -23,7 +26,7 @@ sponApp.controller('DestinationCtrl', ['$scope','destinationsFactory','$routePar
         flash.error = "You must provide a name for the destination."
        }
        else {
-        flash.error = "You must provide an address."
+        flash.error = "Error submitting destination, please try again."
        }
     })
   };

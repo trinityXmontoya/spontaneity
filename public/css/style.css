@@ -606,39 +606,43 @@ label.adventure, label.current_location {
 
 .logout_container {
   border: 2px solid #F9FFE3;
-  padding: .1em;
+  width: 40px;
+  padding: 0 0 .15em 0;
   outline: none;
   margin: 0 auto;
   text-align: center;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
 }
 
 .logout_button {
   float: left;
   margin-bottom: 100px;
+  text-align: center;
 }
 
 .logout {
+  text-align: center;
   font-family: 'Lato', sans-serif;
-  letter-spacing: .02em;
+  word-break: break-all;
+  letter-spacing: .05em;
   color: #F9FFE6;
   font-weight: 400;
-  line-height: .5em;
+  line-height: 0;
   display: inline;
   margin: 0 auto;
   width: 30%;
-  height: 2em;
-  padding: 0 0.5em;
-  text-align: center;
+  height: .25em;
+  /*padding: 0 0.5em;*/
 }
 
 .logout.btm {
   padding-bottom: .5em;
-  margin-bottom: .5em;
+  margin-top: -1em;
+  /*margin: 0 0.5em;*/
 }
 
 .adventure {

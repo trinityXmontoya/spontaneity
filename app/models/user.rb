@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   before_save :downcase_email_and_username
   has_many :adventures
   has_many :visited_destinations, ->{ where(adventures: {status: 'completed'}) }, through: :adventures, source: :destination
+  has_many :submitted_destinations, foreign_key: 'user_id', class_name: 'Destination'
 
   def downcase_email_and_username
     self.email.downcase

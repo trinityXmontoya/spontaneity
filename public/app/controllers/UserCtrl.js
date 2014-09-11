@@ -1,6 +1,7 @@
 sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeParams', '$location', 'flash', function($scope, $rootScope, usersFactory, $routeParams, $location, flash){
 
   var userId = $routeParams.userId;
+  var user = $scope.user;
 
   $scope.getUser = function(){
     console.log(" I RAN")
@@ -9,6 +10,7 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
       usersFactory.getUser(userId)
       .success( function(data){
         $scope.user = data
+        $scope.loadGems(data.visited_destinations.length)
       })
       .error( function(data){
         console.log("oh no guyzzz: " + data)
@@ -61,7 +63,10 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
   }
 
   $scope.loggedIn = function(){
-    if ($rootScope.currentUserId !== ""){ return true }
+    console.log($rootScope.currentUserId)
+    console.log("TYPE", typeof $rootScope.currentUserId)
+    if ($rootScope.currentUserId !== undefined){ return true }
+    else { return false }
   }
 
   $scope.validate = function(input){
@@ -71,6 +76,69 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
     else if ( $(input.target).hasClass("username")){
       usersFactory.validate("username",input)
     }
+  }
+
+  $scope.loadGems = function(adventures){
+    var one_gem = "<div class='profile_gem_circle'>\
+                      <img class='profile_gem' src='/img/gem_1_blue.svg'></img>\
+                   </div>";
+    var five_gem = "<p>5</p>\
+                    <div class='profile_gem_circle'>\
+                      <img class='profile_gem' src='/img/gem_1_cream.svg'></img>\
+                    </div>";
+    var ten_gem =  "<p>10</p>\
+                    <div class='profile_gem_circle'>\
+                      <img class='profile_gem' src='/img/gem_1_red.svg'></img>\
+                    </div>";
+
+    // jquery multiple appends time comparison
+    // http://jsperf.com/jquery-append-multiple-times-vs-array-vs-html-once
+    var html = "";
+
+    var tens = adventures/10
+    var tens_r = adventures % 10
+    var fives = tens_r/5
+    var ones = tens_r % 5
+
+    // javascript loop time comparisons
+    // https://blogs.oracle.com/greimer/entry/best_way_to_code_a
+    if (tens && tens >= 1){ while( tens-- ){ html+= ten_gem } }
+    if (fives && fives >= 1){ while( fives-- ){ html+= five_gem } }
+    if (ones && ones >= 1){ while( ones-- ){ html+= one_gem } }
+    $(".profile_gems").html(html);
+
+    // EXAMPLES
+    // User has 23 adventures:
+    // var tens = 23/10 -> 2
+    // var tens_r = 23 % 10 -> 3
+    // var fives = tens_r/5 -> 3/5 -> 0
+    // var fives_r = tens_r % 5 -> 3%5 -> 3
+    // var ones = fives_r -> 3
+    // --> 2 tens, 3 ones
+
+    // User has 11 adventures:
+    // var tens = 11/10 -> 1
+    // var tens_r = 23 % 10 -> 1
+    // var fives = tens_r/5 -> 1/5 -> 0
+    // var fives_r = tens_r % 5 -> 1%5 -> 1
+    // var ones = fives_r -> 1
+    // --> 1 tens, 1 ones
+
+    // User has 8 adventures:
+    // var tens = 8/10 -> 0
+    // var tens_r = 8 % 10 -> 8
+    // var fives = tens_r/5 -> 8/5 -> 1
+    // var fives_r = tens_r % 5 -> 8%5 -> 3
+    // var ones = fives_r -> 3
+    // --> 1 fives, 3 ones
+
+    // User has 3 adventures:
+    // var tens = 3/10 -> 0
+    // var tens_r = 3 % 10 -> 3
+    // var fives = tens_r/5 -> 3/5 -> 0
+    // var fives_r = tens_r % 5 -> 3%5 -> 3
+    // var ones = fives_r -> 3
+    // --> 3 ones
   }
 
 }]);

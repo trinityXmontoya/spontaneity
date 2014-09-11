@@ -37,14 +37,19 @@ class Adventure < ActiveRecord::Base
         name: res["name"],
         lat: res["location"]["lat"],
         long: res["location"]["lng"],
-        kind: kind
+        kind: kind,
+        user_id: 0
       )
-      if d.save
+      if d.save!
+        puts 'i saved!'
         result = true
       elsif counter == 7
+        puts 'too many'
         kind = 'topPicks'
+        self.save
         foursquare_search_and_add
       else
+        puts 'i didnt save!'
         counter += 1
       end
     end
@@ -103,7 +108,8 @@ class Adventure < ActiveRecord::Base
       google_directions("transit")
     end
     directions = {
-      destination: self.destination.name,
+      adventure_id: id,
+      destination: destination.name,
       directions: res
     }
     return directions
@@ -121,7 +127,7 @@ class Adventure < ActiveRecord::Base
   end
 
   def update_counter_cache
-    self.user.adventures_count = self.user.adventures.count( :conditions => ["status = completed"])
+    self.user.adventures_count = self.user.adventures.count( :conditions => ["status = complete"])
     self.user.save
   end
 

@@ -25,6 +25,7 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
     adventuresFactory.createAdventure(adventure)
     .success( function(data){
       $location.path('/begin')
+      $scope.directions.adventure_id = data.adventure_id
       $scope.directions.steps = data.directions.steps
       $scope.directions.name = data.destination
     })
@@ -70,9 +71,16 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
   $scope.counter = 0;
 
   $scope.completeAdventure = function(){
-    console.log("it's ova baby! BOOYA")
-    $scope.counter == 0;
-    $location.path('/complete')
+    console.log("ADVENTURE_ID", $scope.directions.adventure_id)
+    var adventure_id = $scope.directions.adventure_id
+    adventuresFactory.completeAdventure(adventure_id)
+    .success(function(){
+      $scope.counter = 0;
+      $location.path('/complete')
+    })
+    .error( function(){
+      console.log("ERROR SAVING")
+    })
   };
 
   $scope.$watch('counter', function(){

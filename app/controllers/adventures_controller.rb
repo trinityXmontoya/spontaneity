@@ -16,10 +16,10 @@ class AdventuresController < ApplicationController
     end
   end
 
-  def update
+  def complete
     adventure = Adventure.find(params[:id])
-
-    if adventure.update(adventure_params)
+    adventure.status = 'complete'
+    if adventure.save!
       head :no_content
     else
       render json: adventure.errors, status: :unprocessable_entity

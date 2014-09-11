@@ -35,8 +35,8 @@ class Adventure < ActiveRecord::Base
       res = HTTParty.get(q)["response"]["groups"][0]["items"][counter]["venue"]
       d = Destination.new(
         name: res["name"],
-        lat: res["location"]["lat"],
-        long: res["location"]["lng"],
+        latitude: res["location"]["lat"],
+        longitude: res["location"]["lng"],
         kind: kind,
         user_id: 0
       )
@@ -77,7 +77,7 @@ class Adventure < ActiveRecord::Base
 
   def url_safe_coords
     dest = self.destination
-    "#{dest.lat},#{dest.long}"
+    "#{dest.latitude},#{dest.longitude}"
   end
 
   def google_query(mode)

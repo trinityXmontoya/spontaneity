@@ -481,6 +481,31 @@ button.about {
   /*max-width: 150px;*/
 }
 
+button.authors.left {
+  float: left;
+  width:50%;
+  border: 1.5px solid #E91C30;
+  background-color: #69D1EE;
+  /*max-width: 150px;*/
+}
+
+button.authors.right {
+  float: right;
+  width:50%;
+  border: 1.5px solid #E91C30;
+  background-color: #69D1EE;
+  /*max-width: 150px;*/
+}
+
+.authors {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: .1em;
+  margin: .25em auto .5em auto;
+  color: #F9FFE6;
+}
+
 button.profile_wander, button.profile_upload_button {
   width: 100%;
 }
@@ -533,7 +558,20 @@ input.location.time {
   font-size: 15pt;
   font-style: italic;
   margin: .25em auto 0 auto;
-  color: RGBA(249, 255, 227, .3);
+  color: RGBA(249, 255, 227, .5);
+  line-height: 1.5em;
+  letter-spacing: 2px;
+}
+
+.home_intro.first.about_header {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+/*  font-family: 'Josefin Slab', serif;
+  font-weight: 100;*/
+  font-size: 15pt;
+  font-style: italic;
+  margin: .25em auto 0 auto;
+  color: RGBA(233, 28, 48, 1);
   line-height: 1.5em;
   letter-spacing: 2px;
 }

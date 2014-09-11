@@ -4,16 +4,16 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
   var user = $scope.user;
 
   $scope.getUser = function(){
-    console.log(" I RAN")
-    console.log($rootScope.currentUserId)
     if (userId == $rootScope.currentUserId){
       usersFactory.getUser(userId)
       .success( function(data){
         $scope.user = data
         $scope.loadGems(data.visited_destinations.length)
+        $scope.destinationMarkers = data.visited_destinations;
       })
       .error( function(data){
-        console.log("oh no guyzzz: " + data)
+        $location.path('/signin')
+        flash.error = "Please login."
       })
     }
     else {
@@ -37,14 +37,12 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
   $scope.createUser = function(user){
     usersFactory.createUser(user)
     .success( function(data){
-      console.log(data)
       $scope.signUpForm.$setPristine();
       $scope.user = {};
       $location.path('/signin');
       flash.success = 'Succesfully signed up, please login';
     })
     .error( function(data){
-      console.log("there seems to have been an error")
       flash.error = 'There was an error with your entered info, please double check.';
     })
   };
@@ -63,8 +61,6 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
   }
 
   $scope.loggedIn = function(){
-    console.log($rootScope.currentUserId)
-    console.log("TYPE", typeof $rootScope.currentUserId)
     if ($rootScope.currentUserId !== undefined){ return true }
     else { return false }
   }
@@ -112,33 +108,49 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
     // var tens = 23/10 -> 2
     // var tens_r = 23 % 10 -> 3
     // var fives = tens_r/5 -> 3/5 -> 0
-    // var fives_r = tens_r % 5 -> 3%5 -> 3
-    // var ones = fives_r -> 3
+    // var ones = tens_r%5 -> 3
     // --> 2 tens, 3 ones
 
     // User has 11 adventures:
     // var tens = 11/10 -> 1
     // var tens_r = 23 % 10 -> 1
     // var fives = tens_r/5 -> 1/5 -> 0
-    // var fives_r = tens_r % 5 -> 1%5 -> 1
-    // var ones = fives_r -> 1
+    // var ones = tens_r%5 -> 1
     // --> 1 tens, 1 ones
 
     // User has 8 adventures:
     // var tens = 8/10 -> 0
     // var tens_r = 8 % 10 -> 8
     // var fives = tens_r/5 -> 8/5 -> 1
-    // var fives_r = tens_r % 5 -> 8%5 -> 3
-    // var ones = fives_r -> 3
+    // var ones = tens_r%5 -> 3
     // --> 1 fives, 3 ones
 
     // User has 3 adventures:
     // var tens = 3/10 -> 0
     // var tens_r = 3 % 10 -> 3
     // var fives = tens_r/5 -> 3/5 -> 0
-    // var fives_r = tens_r % 5 -> 3%5 -> 3
-    // var ones = fives_r -> 3
+    // var ones = tens_r%5 -> 3
     // --> 3 ones
-  }
+  };
+
+
+  $scope.map = {
+    center: {
+        latitude: 39.8282,
+        longitude: -98.5795
+    },
+    zoom: 2,
+    draggable: true
+  };
+
+  // $scope.options=
+  //   { draggable: true,
+  //     labelAnchor: '10 39',
+  //     labelContent: i,
+  //     labelClass: 'labelMarker'},
+  //     latitude: latitude,
+  //     longitude: longitude,
+  //     title: 'm' + i
+  //   };
 
 }]);

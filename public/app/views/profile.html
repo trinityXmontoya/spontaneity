@@ -30,7 +30,6 @@
 
 <div class="welcome-block">
   <div class="section group">
-    {{user}}
     <div class='col span_3_of_12'>
     </div>
     <div class="col span_6_of_12 feature">
@@ -38,7 +37,12 @@
         <div class="profile_gems">
         </div>
       </div>
+
       <div class="profile_map_canvas">
+        <google-map center="map.center" zoom="map.zoom" draggable="true">
+         <markers models="destinationMarkers" coords="'self'" isLabel="true">
+         </markers>
+        </google-map>
       </div>
       <div class="buttons_wrapper">
         <a href="/submit_destination">

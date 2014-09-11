@@ -1,9 +1,10 @@
-<div class="welcome-block">
+<div class="welcome-block" ng-init="getUser()">
   <div class="section group">
     <div class='col span_3_of_12'>
       <div class="back_button">
-        <i class="fa fa-chevron-left">
-        </i>
+        <a href="/home">
+          <i class="fa fa-chevron-left"></i>
+        </a>
       </div>
     </div>
     <div class="col span_6_of_12 feature">
@@ -29,29 +30,23 @@
 
 <div class="welcome-block">
   <div class="section group">
-
+    {{user}}
     <div class='col span_3_of_12'>
     </div>
-
     <div class="col span_6_of_12 feature">
       <div class="profile_gems_wrapper">
         <div class="profile_gems">
-            <div class="profile_gem_circle">
-              <img class="profile_gem" src="/img/gem_1_blue.svg"></img>
-            </div>
-            <div class="profile_gem_circle cream">
-              <img class="profile_gem" src="/img/gem_1_cream.svg"></img>
-            </div>
-            <div class="profile_gem_circle">
-              <img class="profile_gem" src="/img/gem_1_red.svg"></img>
-            </div>
         </div>
       </div>
       <div class="profile_map_canvas">
       </div>
       <div class="buttons_wrapper">
+        <a href="/submit_destination">
+          <button class='profile_wander' name="profile_wander">SUBMIT A DESTINATION
+          </button>
+        </a>
         <a href="/new_adventure">
-          <button class='profile_wander' name="profile_wander" value="WANDER">GO ON AN ADVENTURE
+          <button class='profile_wander' name="profile_wander">GO ON AN ADVENTURE
           </button>
         </a>
       </div>

@@ -2,11 +2,12 @@ sponApp.controller('LogoutCtrl', ['$rootScope','usersFactory','$location', 'flas
 
   var logout = function(){
     var user_id = $rootScope.currentUserId;
+    console.log(user_id)
     usersFactory.logout(user_id)
     .success( function(){
       console.log('no error')
       $location.path('/home')
-      $rootScope.currentUserId = ""
+      $rootScope.currentUserId = undefined
       flash.success="Succesfully logged out"
     })
     .error( function(data){

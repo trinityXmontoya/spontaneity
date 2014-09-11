@@ -7,14 +7,13 @@ sponApp.controller('DestinationCtrl', ['$scope', '$rootScope','destinationsFacto
   };
 
   $scope.submitDestination = function(destination) {
-    console.log($rootScope.currentUserId)
-    destination.user_id = $rootScope.currentUserId
-    console.log(destination)
+    var currentUser = $rootScope.currentUserId
+    destination.user_id = currentUser
     destinationsFactory.createDestination(destination)
     .success( function(){
       $scope.destinationForm.$setPristine();
       $scope.destination = {};
-      $location.path('/profile/'+1)
+      $location.path('/profile/'+ currentUser)
       flash.success = "Thanks! We've added " + destination.name + " to our list of adventures!"
     })
     .error( function(data){

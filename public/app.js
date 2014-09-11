@@ -24,11 +24,6 @@ sponApp.config(['$routeProvider', '$locationProvider', 'flashProvider', function
          }
        }
      })
-    .when('/declan',
-      {
-        controller: '',
-        templateUrl: 'app/views/declan.html'
-      })
     .when('/signup',{
       controller: 'UserCtrl',
       templateUrl: 'app/views/sign_up.html'

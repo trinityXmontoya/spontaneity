@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400,700);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:100,400,700);
+
+body {
+  background-color: #68CFED;
+}
+
 /*  SECTIONS  ============================================================================= */
 
 .section {
@@ -624,7 +629,7 @@ button.location {
   text-align: center;
 }
 
-label.adventure, label.current_location {
+label.adventure, label.current_location, .adventure {
   font-family: 'Josefin Slab', serif;
   font-weight: 700;
   letter-spacing: .02em;
@@ -1205,6 +1210,8 @@ p.help-block {
   text-transform: capitalize;
   display: inline-block;
 }
+
+
 
 /*Floating*/
 

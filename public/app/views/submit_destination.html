@@ -54,22 +54,22 @@
 
         <input ng-model="destination.kind" type="radio" id="destination_food" value="food" name="destination" required/>
         <label for="destination_food">
-          <span class="destination">
+          <span class="destination adventure">
             <i class="fa fa-spoon"></i>FOOD
           </span>
         </label>
         <input ng-model="destination.kind" type="radio" id="destination_drink" value="drinks" name="destination" required/>
         <label for="destination_drink">
-          <span class="destination">
+          <span class="destination adventure">
             <i class="fa fa-glass"></i>DRINK
           </span>
         </label>
         <input ng-model="destination.kind" type="radio" id="destination_event" value="sights" name="destination" required/>
         <label for="destination_event">
-          <span class="destination">
+          <span class="destination adventure">
             <i class="fa fa-rocket"></i>EXPERIENCE
           </span>
-        </label>
+        </label></br>
 
 
         <input type="submit" ng-click="submitForm(destinationForm.$valid)" class='sign_up_button' placeholder='SAVE' ng-disabled="destinationForm.$invalid" />

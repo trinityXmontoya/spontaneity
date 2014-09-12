@@ -1,4 +1,4 @@
-sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeParams', '$location', 'flash', function($scope, $rootScope, usersFactory, $routeParams, $location, flash){
+sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeParams', '$location', 'flash', 'googleMaps', function($scope, $rootScope, usersFactory, $routeParams, $location, flash, googleMaps){
 
   var userId = $routeParams.userId;
   var user = $scope.user;
@@ -141,6 +141,14 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
     },
     zoom: 2,
     draggable: true
+  };
+
+  $scope.mapOptions = {
+        styles: googleMaps.mapStyles,
+        zoomControl: false,
+        mapTypeControl: false,
+        panControl: false,
+        streetViewControl: false
   };
 
   // $scope.options=

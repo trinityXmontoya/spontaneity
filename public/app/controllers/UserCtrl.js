@@ -78,11 +78,13 @@ sponApp.controller('UserCtrl', ['$scope', '$rootScope', 'usersFactory', '$routeP
     var one_gem = "<div class='profile_gem_circle'>\
                       <img class='profile_gem' src='/img/gem_1_blue.svg'></img>\
                    </div>";
-    var five_gem = "<p>5</p>\
-                    <div class='profile_gem_circle'>\
+    var five_gem = "<div class='profile_gem_label_container'>\
+                    <p class='gem_label'>5</p>\
+                    <div class='profile_gem_circle_cream'>\
                       <img class='profile_gem' src='/img/gem_1_cream.svg'></img>\
                     </div>";
-    var ten_gem =  "<p>10</p>\
+    var ten_gem =  "<div class='profile_gem_label_container'>\
+                    <p> class='gem_label'10</p>\
                     <div class='profile_gem_circle'>\
                       <img class='profile_gem' src='/img/gem_1_red.svg'></img>\
                     </div>";

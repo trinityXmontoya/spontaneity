@@ -747,7 +747,7 @@ label {
 .profile_gems {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  margin: 2em auto 2em auto;
+  margin: 1em auto 1em auto;
   color: #F9FFE6;
   /*border: 3px solid #F9FFE6;*/
   /*height: 150px;*/
@@ -1031,11 +1031,42 @@ button.interests {
   height: 40px;
   float: left;
   background-color: #F9FFE6;
+  margin: 0 auto;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   -ms-border-radius: 40px;
   -o-border-radius: 40px;
   border-radius: 40px;
+}
+
+.profile_gem_circle_cream {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background-color: #69D1EE;
+  margin: 0 auto;
+  border: 1.5px solid #F9FFE6;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  border-radius: 40px;
+}
+
+.gem_label {
+  color: #F9FFE6;
+  margin: 0 auto 0 17px;
+  padding: 0;
+  float: left;
+}
+
+.profile_gem_label_container {
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  float: left;
+  background-color: #69D1EE;
+  margin: 0 auto 20px auto;
 }
 
 img.profile_gem {

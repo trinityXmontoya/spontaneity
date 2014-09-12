@@ -76,9 +76,9 @@
         <input ng-model="adventure.time_limit" class="location time" name="time_limit" type="number" min="15" placeholder=':00' ng-class="{ 'has-error': newAdventureForm.time_limit.$invalid && !newAdventureForm.time_limit.$pristine}" required/>
         <h3 class="location_text time_text minutes">minutes</h3>
         <br/>
-        <p ng-show="newAdventureForm.time_limit.$error.required && !newAdventureForm.time_limit.$pristine">Time limit required!</p>
-        <p ng-show="newAdventureForm.time_limit.$error.min && !newAdventureForm.time_limit.$pristine">Each adventure requires at least 15 minutes.</p>
-        <p ng-show="newAdventureForm.time_limit.$error.number && !newAdventureForm.time_limit.$pristine">Valid number required.</p>
+        <p ng-show="newAdventureForm.time_limit.$error.required && !newAdventureForm.time_limit.$pristine" class="help-block">Time limit required!</p>
+        <p ng-show="newAdventureForm.time_limit.$error.min && !newAdventureForm.time_limit.$pristine" class="help-block">Each adventure requires at least 15 minutes.</p>
+        <p ng-show="newAdventureForm.time_limit.$error.number && !newAdventureForm.time_limit.$pristine" class="help-block">Valid number required.</p>
 
         <!-- SUBMIT -->
         <input ng-click="submitForm(newAdventureForm)" class='location_button' name="submit" type="submit" value="GO" ng-disabled="newAdventureForm.$invalid"/>

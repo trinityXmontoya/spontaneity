@@ -15,4 +15,4 @@
 # user1.adventures.create(destination_id: 3, start_location: "02135", time_limit: 30, status: 'in-progress')
 
 
-# User.create(id: 0, username: 'admin', password: 'admin', email: 'help@spontaneity.io')
+User.create(id: 0, username: 'admin', password: 'admin', email: 'help@spontaneity.io')

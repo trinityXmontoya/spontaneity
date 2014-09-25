@@ -29,9 +29,9 @@ sponApp.controller('AdventureCtrl', ['$scope', '$routeParams', '$location','adve
       $scope.directions.steps = data.directions.steps
       $scope.directions.name = data.destination
     })
-    .error( function(){
-      $location.path('/new_adventure')
-      flash.error = "Error beginning your adventure, please try again!"
+    .error( function(data){
+      console.log(data)
+      flash.error = data
     })
   };
 

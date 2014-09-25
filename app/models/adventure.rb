@@ -1,5 +1,5 @@
 class Adventure < ActiveRecord::Base
-  belongs_to :user, counter_cache: true
+  belongs_to :user
   belongs_to :destination
 
   AVG_MILE_TIME = 14
@@ -7,10 +7,13 @@ class Adventure < ActiveRecord::Base
   FOURSQUARE_API_BASE = "https://api.foursquare.com/v2/venues/explore?"
 
   def select_destination
-    options = self.initial_filtering
+    options = initial_filtering
     options = foursquare_search_and_add if !options
-    # options = google_filter(options)
-    self.destination_id = options.id
+    if options.is_a? Hash
+      return options["text"]
+    else
+      self.destination_id = options.id
+    end
   end
 
   def foursquare_query
@@ -32,7 +35,13 @@ class Adventure < ActiveRecord::Base
     result = false
     counter = 0
     while !result
-      res = HTTParty.get(q)["response"]["groups"][0]["items"][counter]["venue"]
+      res = HTTParty.get(q)["response"]
+      if res["warning"]
+        return res["warning"]
+        break
+      else
+        res = res["groups"][0]["items"][counter]["venue"]
+      end
       d = Destination.new(
         name: res["name"],
         latitude: res["location"]["lat"],
@@ -113,22 +122,6 @@ class Adventure < ActiveRecord::Base
       directions: res
     }
     return directions
-  end
-
-
-  # COUNTER CACHE METHODS
-
-  def after_save
-    self.update_counter_cache
-  end
-
-  def after_destroy
-    self.update_counter_cache
-  end
-
-  def update_counter_cache
-    self.user.adventures_count = self.user.adventures.count( :conditions => ["status = complete"])
-    self.user.save
   end
 
 end

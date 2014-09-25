@@ -8,11 +8,11 @@ class AdventuresController < ApplicationController
   def create
     adventure = Adventure.new(adventure_params)
     adventure.user = current_user
-    adventure.select_destination
-    if adventure.save
+    res = adventure.select_destination
+    if adventure.destination && adventure.save
       render json: adventure.google_directions("walking")
     else
-      render json: adventure.errors, status: :unprocessable_entity
+      render json: res, status: :unprocessable_entity
     end
   end
 
